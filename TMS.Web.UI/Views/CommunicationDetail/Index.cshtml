@@ -1,0 +1,52 @@
+﻿@using TMS.Entities
+@using TMS.Web.UI.Controllers
+@model CommunicationDetail
+@{
+  Layout = string.Empty;
+}
+
+@using (Html.BeginForm("Index", "CommunicationDetail", FormMethod.Get, new { @id = "communicationDetailForm" }))
+{
+  <div class="modal fade" id="cd" tabindex="-1" role="dialog" aria-labelledby="titleCD" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="titleCD">Communication Detail</h4>
+        </div>
+        <div class="modal-body">
+          @Html.LabelFor(detail => detail.CommunicationType)
+          @Html.EnumDropDownListFor(detail => detail.CommunicationType)<br />
+          @Html.LabelFor(detail => detail.Uri)
+          <div class="input-group"><span class="input-group-addon"><i id="brandicon" class="fa fa-question fa-lg"></i></span>@Html.TextBoxFor(detail => detail.Uri, new { @class = "form-control" })</div>
+        </div>
+        <div class="modal-footer">
+          <span class="btn btn-outline btn-primary" id="communicationDetailSave"><i class="glyphicon glyphicon-check"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+<script language="javascript" type="text/javascript">
+  $('body').delegate('#CommunicationType', 'change', function () {
+    var sel = $('#CommunicationType').val();
+    var $i = $('#brandicon');
+    $i.attr('class', '');
+    var cls = 'fa fa-question fa-lg';
+    if (sel == 'Email')
+      cls = 'fa fa-envelope fa-lg';
+    if (sel == 'Skype')
+      cls = 'fa fa-skype fa-lg';
+    if (sel == 'Phone')
+      cls = 'fa fa-phone fa-lg';
+    if (sel == 'Mobile')
+      cls = 'fa fa-mobile fa-lg';
+    if (sel == 'Twitter')
+      cls = 'fa fa-twitter fa-lg';
+    if (sel == 'Facebook')
+      cls = 'fa fa-facebook fa-lg';
+    if (sel == 'LinkedIn')
+      cls = 'fa fa-linkedin fa-lg';
+    $i.addClass(cls);
+  });
+</script>

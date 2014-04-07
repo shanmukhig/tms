@@ -1,0 +1,70 @@
+﻿@*<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width" />
+      <title>@ViewBag.Title</title>
+      @Styles.Render("~/Content/css")
+      @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+
+      @RenderBody()
+
+      @Scripts.Render("~/bundles/jquery")
+      @RenderSection("scripts", required: false)
+    </body>
+  </html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@ViewBag.Title</title>
+  <!-- Bootstrap -->
+  @*<link href="~/Content/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/simplex/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css" rel="stylesheet">*@
+  <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css" rel="stylesheet">
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/superhero/bootstrap.min.css" rel="stylesheet">*@
+  @*<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">*@
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <nav class="navbar" style="padding: 5px;margin-bottom: 5px;">
+    <div class="navbar-header pull-left">
+      <a href="#"><img src="../Content/images/dojo-learning.png" class="img-rounded" style="height: 60px;" alt="Logo" /></a>
+    </div>
+    <div class="navbar-left pull-right help-block" style="padding-right: 15px;">
+      <div class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default">
+          <span class="text-center">Shanmukhi Goli&nbsp;</span><b class="glyphicon glyphicon-cog"></b>
+        </a>
+        <ul class="dropdown-menu-right dropdown-menu">
+          <li role="presentation"><a href="#"><b class="glyphicon glyphicon-edit"></b>&nbsp;Edit</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a href="#"><b class="glyphicon glyphicon-off"></b>&nbsp;Signout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  @RenderBody()
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

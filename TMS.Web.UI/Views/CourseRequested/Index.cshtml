@@ -1,0 +1,31 @@
+﻿@using TMS.Entities
+@using TMS.Web.UI.Controllers
+@model CourseRequested
+
+@{
+  Layout = string.Empty;
+}
+@using (Html.BeginForm("index", "CourseRequested", FormMethod.Get, new { id = "courseRequiredForm" }))
+{
+  <div class="modal fade" id="sr" tabindex="-1" role="dialog" aria-labelledby="titleSR" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="titleSR">Course Required</h4>
+        </div>
+        <div class="modal-body">
+          <strong>Name</strong>
+          @Html.DropDownListFor(requested => requested.CourseName, ViewBag.Courses as IEnumerable<SelectListItem>, "Select One...", new { @class = "form-control" })
+          @Html.LabelFor(detail => detail.ServiceRequired)
+          @Html.EnumDropDownListFor(detail => detail.ServiceRequired)
+          @Html.LabelFor(detail => detail.AmountQuoted)
+          @Html.TextBoxFor(detail => detail.AmountQuoted, new { @class = "form-control" })
+        </div>
+        <div class="modal-footer">
+          <span class="btn btn-outline btn-primary" id="ServiceRequiredSave"><i class="glyphicon glyphicon-check"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
