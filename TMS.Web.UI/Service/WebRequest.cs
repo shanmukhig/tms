@@ -102,7 +102,7 @@ namespace TMS.Web.UI.Service
 
     public HttpWebRequest PostRequest()
     {
-      httpMethod = System.Net.Http.HttpMethod.Post;
+      //httpMethod = this.httpMethod;
       ValidateUrl();
       System.Net.WebRequest webRequest = GetWebRequest();
       //webRequest.ContentLength = default(int);

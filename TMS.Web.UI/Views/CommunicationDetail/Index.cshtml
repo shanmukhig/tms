@@ -15,10 +15,31 @@
           <h4 class="modal-title" id="titleCD">Communication Detail</h4>
         </div>
         <div class="modal-body">
-          @Html.LabelFor(detail => detail.CommunicationType)
-          @Html.EnumDropDownListFor(detail => detail.CommunicationType)<br />
-          @Html.LabelFor(detail => detail.Uri)
-          <div class="input-group"><span class="input-group-addon"><i id="brandicon" class="fa fa-question fa-lg"></i></span>@Html.TextBoxFor(detail => detail.Uri, new { @class = "form-control" })</div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 padding-top text-right">@Html.LabelFor(detail => detail.CommunicationType):</div>
+                <div class="col-md-3 padding-top text-right">@Html.EnumDropDownListFor(detail => detail.CommunicationType)</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 padding-top text-right">@Html.LabelFor(detail => detail.Uri)</div>
+                <div class="col-md-3 padding-top text-right">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i id="brandicon" class="fa fa-question fa-lg"></i></span>
+                    @Html.TextBoxFor(detail => detail.Uri, new { @class = "form-control" })
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 padding-top text-right"></div>
+                <div class="col-md-3 padding-top text-right"></div>
+              </div>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
           <span class="btn btn-outline btn-primary" id="communicationDetailSave"><i class="glyphicon glyphicon-check"></i></span>

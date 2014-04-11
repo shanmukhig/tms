@@ -142,20 +142,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\BestTimeToContactController.cs" />
     <Compile Include="Controllers\CommunicationDetailController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseRequestedController.cs" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\Course.js" />
     <Content Include="Scripts\jquery.validate.bootstrap.popover.min.js" />
-    <Compile Include="Service\CountryService.cs" />
-    <Compile Include="Service\CoursesService.cs" />
+    <Compile Include="Controllers\CourseTopicController.cs" />
     <Compile Include="Controllers\EmptyController.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Service\IWebRequest.cs" />
     <Compile Include="Service\IWebService.cs" />
     <Compile Include="Controllers\LeadController.cs" />
-    <Compile Include="Service\LeadsService.cs" />
     <Compile Include="Helpers\RenderView.cs" />
-    <Compile Include="Service\UsersService.cs" />
     <Compile Include="Service\WebRequest.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
@@ -179,7 +179,7 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <None Include="Content\bootstrap.min.css.bak" />
     <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -272,7 +272,9 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\morris.js" />
     <Content Include="Scripts\sb-admin.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -292,6 +294,13 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\CourseRequested\Index.cshtml" />
     <Content Include="Views\Lead\Create.cshtml" />
+    <Content Include="Views\BestTimeToContact\Index.cshtml" />
+    <Content Include="Views\Lead\LeadPartial.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\CoursePartial.cshtml" />
+    <Content Include="Views\CourseTopic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

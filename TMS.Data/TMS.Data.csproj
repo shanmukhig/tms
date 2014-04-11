@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TMS.Entities.Enum\TMS.Entities.Enum.csproj">
+      <Project>{AA19DDC7-CB69-45A4-8F63-335E431177A4}</Project>
+      <Name>TMS.Entities.Enum</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMS.Entities\TMS.Entities.csproj">
       <Project>{F9F3B8CA-9CA6-4889-AC7D-FEC7FA1A1F7D}</Project>
       <Name>TMS.Entities</Name>

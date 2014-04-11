@@ -1,4 +1,4 @@
-/*! 
+﻿/*! 
  * LESS - Leaner CSS v1.5.1 
  * http://lesscss.org 
  * 
@@ -4082,7 +4082,7 @@ tree.mixin.Call.prototype = {
                               }).join(', ') : "") + ")`",
                     index:   this.index, filename: this.currentFileInfo.filename };
         } else {
-            throw { type: 'Name',
+            throw { type: 'Title',
                 message: this.selector.toCSS().trim() + " is undefined",
                 index: this.index, filename: this.currentFileInfo.filename };
         }
@@ -5114,7 +5114,7 @@ tree.Variable.prototype = {
         }
         
         if (this.evaluating) {
-            throw { type: 'Name',
+            throw { type: 'Title',
                     message: "Recursive variable definition for " + name,
                     filename: this.currentFileInfo.file,
                     index: this.index };
@@ -5131,7 +5131,7 @@ tree.Variable.prototype = {
             return variable;
         }
         else {
-            throw { type: 'Name',
+            throw { type: 'Title',
                     message: "variable " + name + " is undefined",
                     filename: this.currentFileInfo.filename,
                     index: this.index };

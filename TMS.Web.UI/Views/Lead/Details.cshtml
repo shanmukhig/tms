@@ -1,5 +1,4 @@
-﻿@using System.Text
-@using TMS.Entities
+﻿@using TMS.Entities
 @using TMS.Web.UI.Controllers
 @model Lead
 
@@ -15,8 +14,8 @@
           <button class="btn btn-outline btn-info" onclick="location.href = '@Url.Action("Index", "Lead")'"><i class="fa fa-arrow-left"></i></button>
         </div>
         <div class="btn-group">
-          <button class="btn btn-outline btn-primary" onclick="location.href = '@Url.Action("Edit", "Lead" ,new { id = @Model.Id })'"><i class="fa fa-edit"></i></button>
-          <button class="btn btn-outline btn-danger"><i class="fa fa-trash-o"></i></button>
+          <button class="btn btn-outline btn-primary" onclick="location.href = '@Url.Action("Edit", "Lead", new { id = @Model.Id })'"><i class="fa fa-edit"></i></button>
+          <span class="btn btn-outline btn-danger" id="deleteLead" data-uri="@Url.Action("Delete", "Lead", new { @Model.Id})"><i class="fa fa-trash-o"></i></span>
         </div>
         <div class="btn-group">
           <button class="btn btn-outline btn-info"><i class="fa fa-print"></i></button>
@@ -31,7 +30,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
-                  <div class="col-md-4 text-right"><span><strong>Name:</strong></span></div>
+                  <div class="col-md-4 text-right"><span><strong>Title:</strong></span></div>
                   <div class="col-md-8"><span>@Model.Salutation. @Model.LastName, @Model.FirstName</span></div>
                 </div>
               </div>
@@ -60,7 +59,18 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-3 text-right"><span><strong>@Html.LabelForPascal(lead => lead.ReferredBy):</strong></span></div>
-                  <div class="col-md-9  "><span>@ViewBag.ReferredBy.Name</span></div>
+                  <div class="col-md-9  ">
+                    <span>
+                      @{
+                        List<User> users = ViewBag.Users;
+                        User referredBy = users.SingleOrDefault(x => @Model.ReferredBy == x.Id);
+                        if (referredBy != null)
+                        {
+                          @referredBy.Name;
+                        }
+                      }
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -78,10 +88,9 @@
                   <div class="col-md-3 text-right"><span><strong>@Html.LabelForPascal(lead => lead.Country):</strong></span></div>
                   <div class="col-md-9  ">
                     @{
-                      Country country = ViewBag.Country as Country;
-                      <img src="~/images/blank.gif" class="flag flag-@country.Code.ToLower()" alt=@country.Name />
+                      Country country = (ViewBag.Countries as IEnumerable<Country>).Single(x => x.Code.Equals(@Model.Country, StringComparison.InvariantCultureIgnoreCase));
                     }
-                    <span>@Model.Country</span>
+                    <span>@country.Name</span>
                   </div>
                 </div>
               </div>
@@ -128,7 +137,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="row">
-                  <div class="col-md-5 text-right"><span><strong>@Html.LabelForPascal(lead => lead.DemoDateTime)</strong></span></div>
+                  <div class="col-md-5 text-right"><span><strong>@Html.LabelForPascal(lead => lead.DemoDateTime):</strong></span></div>
                   <div class="col-md-7">
                     @if (Model.DemoDateTime.HasValue)
                     {
@@ -215,10 +224,11 @@
               <li class="list-group-item  list-group-item-text list-group-item-info"><strong>Course Details</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i></li>
               @if (Model.Courses != null && Model.Courses.Any())
               {
+                var courses = ViewBag.Courses as List<Course>;
                 foreach (CourseRequested courseRequested in Model.Courses)
                 {
                   <li class="list-group-item">
-                    <strong>Name: </strong>@courseRequested.CourseName, <strong>Service Required: </strong> @Html.PascalCaseToPrettyString(courseRequested.ServiceRequired), <strong>Amount Quoted: </strong>@courseRequested.AmountQuoted
+                    <strong>Title: </strong>@courses.Single(x => x.Id == courseRequested.CourseId).Title, <strong>Service Required: </strong> @Html.PascalCaseToPrettyString(courseRequested.ServiceRequired), <strong>Amount Quoted: </strong>@courseRequested.AmountQuoted
                   </li>
                 }
               }
@@ -238,3 +248,26 @@
   </div>
 </div>
 <script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Lead_Create_Edit.js")></script>
+<script type="text/javascript" language="javascript">
+  submitConfirm('span i.fa-trash-o', 'Do you want to discard the changes?', function() {
+    //alert($('#deleteLead').attr('data-uri'));
+    var dataUri = $('#deleteLead');
+
+    dataUri.html('<i class="fa fa-spinner fa-spin"></i>');
+    //dataUri.attr('disabled', true);
+
+    $.ajax({
+      type: 'DELETE',
+      contentType: 'application/json',
+      url: dataUri.attr('data-uri'),
+      //data: JSON.stringify(lead),
+      success: function(data) {
+        var uri = dataUri.attr('data-uri').split('/');
+        window.location = window.location.protocol + '//' + window.location.host + '/' + uri[1] + '/' + uri[2];
+      },
+      failure: function(result) {
+        alert(result);
+      }
+    });
+  });
+</script>

@@ -10,7 +10,7 @@ namespace TMS.ServiceAPI.Controllers
   {
     private readonly IDomainService<User> _userDomainService;
 
-    public UserAPIController(IDomainService<User> userDomainService)
+    public UserAPIController(DomainService<User> userDomainService)
     {
       _userDomainService = userDomainService;
     }

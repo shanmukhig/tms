@@ -6,9 +6,9 @@ namespace TMS.Web.UI.Service
   {
     IEnumerable<T> Get(int? count);
     IEnumerable<T> Get(string searchString, string searchField);
-    T Get(string Id);
+    T Get(string id);
     T Create(T resource);
     T Update(T resource);
-    void Delete(string Id);
+    void Delete(string id);
   }
 }

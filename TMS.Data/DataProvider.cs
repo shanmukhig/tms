@@ -5,6 +5,9 @@ using System.Reflection;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using TMS.Entities;
+using TMS.Entities.Enum;
 
 namespace TMS.Data
 {
@@ -139,7 +142,7 @@ namespace TMS.Data
       if (!Collection.IndexExists(indexes.ToArray()))
         Collection.EnsureIndex(indexes.ToArray());
 
-      //Log.IfInfoFormat("Created MongoDB Index for Collection '{0}'", t.Name);
+      //Log.IfInfoFormat("Created MongoDB Index for Collection '{0}'", t.Title);
       //foreach (var index in indexes)
       //Log.IfInfoFormat("Index created: {0}", index);
     }
@@ -164,32 +167,62 @@ namespace TMS.Data
 
     public virtual IQueryable<T> Get(int? count)
     {
-      throw new NotImplementedException();
+      var leads = Collection.FindAllAs<T>().SetSortOrder(SortBy.Descending("CreatedOn")).AsQueryable();
+      return count.HasValue ? leads.Take(count.Value) : leads;
     }
 
     public virtual IQueryable<T> Get(string searchString, string searchFields)
     {
-      throw new NotImplementedException();
+      string[] propNames = searchFields.Split(',');
+      List<IMongoQuery> queryFields = new List<IMongoQuery>();
+
+      PropertyInfo[] propertyInfos = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public);
+
+      foreach (var propertyInfo in propNames.Select(propName => propertyInfos.SingleOrDefault(x => x.Name == propName)).Where(propertyInfo => propertyInfo != null))
+      {
+        Type pi = propertyInfo.PropertyType.IsGenericType ? Nullable.GetUnderlyingType(propertyInfo.PropertyType) : propertyInfo.PropertyType;
+
+        if (pi.IsEnum)
+        {
+          IEnumerable<string> enumerable = Enum.GetNames(pi).Where(x => x.Contains(searchString));
+          queryFields.AddRange(enumerable.Select(s => (int)Enum.Parse(pi, s, true)).Select(o => Query.EQ(propertyInfo.Name, o)));
+        }
+        else if (pi == typeof(string))
+        {
+          queryFields.Add(Query.Matches(propertyInfo.Name, string.Format("/.*{0}.*/i", searchString)));
+        }
+        else
+        {
+          queryFields.Add(Query.EQ(propertyInfo.Name, searchString));
+        }
+      }
+
+      IMongoQuery query = Query.Or(queryFields);
+      return Collection.FindAs<T>(query).AsQueryable();
     }
 
     public virtual T Get(string Id)
     {
-      throw new NotImplementedException();
+      return Collection.FindOneByIdAs<T>(Id);
     }
 
     public virtual T Create(T resource)
     {
-      throw new NotImplementedException();
+      Store(resource);
+      return resource;
     }
 
     public virtual T Update(T resource)
     {
-      throw new NotImplementedException();
+      return Create(resource);
     }
 
     public virtual void Delete(string Id)
     {
-      throw new NotImplementedException();
+      BaseEntity baseEntity = Get(Id) as BaseEntity;
+      baseEntity.Status = Status.Deleted;
+      Store(baseEntity as T);
+      //Collection.Remove(new QueryDocument("_id", Id));
     }
   }
 }

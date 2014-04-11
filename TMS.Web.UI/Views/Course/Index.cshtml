@@ -1,5 +1,98 @@
-﻿@model TMS.Entities.Course
+﻿@using System.Configuration
+@using System.Globalization
+@using System.Reflection
+@using TMS.Entities
+@using TMS.Web.UI.Controllers
+@model Course
 
 @{
-  Layout = string.Empty;
+  ViewBag.Title = "Courses";
+  Layout = "../Shared/_Layout.cshtml";
 }
+
+<div class="row" style="padding-top: 15px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="input-group">
+        <select class="selectpicker show-menu-arrow" data-size="8" data-selected-text-format="count>0" title="" multiple>
+          @{
+            List<string> propsToIgnore = new List<string> { "Id", "CreatedOn", "CreatedBy", "ModifiedOn", "ModifiedBy", "CourseTopics" };
+          }
+          @foreach (PropertyInfo propertyInfo in typeof(Course).GetProperties(BindingFlags.Instance | BindingFlags.Public).OrderBy(x => x.Name).Where(x => !@propsToIgnore.Contains(x.Name)))
+          {
+            <option>@propertyInfo.Name</option>
+          }
+        </select>
+        <input style="height: 47px;" type="text" class="form-control" placeholder="Search Courses..." id="txtSearch">
+        <span class="btn btn-outline btn-primary input-group-addon" id="courseSearch" data-url="@Url.Action("Search", "Course", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
+          <i class="glyphicon glyphicon-search"></i>
+        </span>
+        <span class="btn btn-outline btn-primary input-group-addon" onclick="location.href='@Url.Action("Create", "Course")'"><i class="glyphicon glyphicon-book"></i></span>
+        <span class="btn btn-outline btn-danger input-group-addon"><i class="glyphicon glyphicon-trash"></i></span>
+        <span class="btn btn-outline btn-info input-group-addon"><i class="glyphicon glyphicon-print"></i></span>
+      </div>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover display" id="dataTables-example">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Duration</th>
+              <th>Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+              List<Course> courses = ViewBag.Courses;
+              if (courses != null && courses.Any())
+              {
+                foreach (Course course in ViewBag.Courses)
+                {
+                  <tr onclick="location.href = '@Url.Action("Details", "Course", new {id = course.Id})' " style="cursor: pointer;">
+                    <td>@course.Title</td>
+                    <td>
+                      @course.Description
+                    </td>
+                    <td>
+                      @course.DurationInDays.ConvertToString("day")
+                    </td>
+                    <td>
+                      @if (course.Price.HasValue)
+                      {
+                        @course.Price.Value.ToCurrencyString();
+                      }
+                    </td>
+                    <td>
+                      @course.Status
+                    </td>
+                  </tr>
+                }
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- /.panel-body -->
+  </div>
+  <!-- /.panel -->
+  <!-- /.col-lg-12 -->
+</div>
+<script language="javascript" type="text/javascript">
+  $(document).ready(function () {
+    $('#dataTables-example').dataTable();
+
+    $('.selectpicker').selectpicker({
+      'countSelectedText': '',
+    });
+  });
+
+  $('#courseSearch').click(function () {
+    window.location = $(this).attr('data-url').replace('%7BsearchFields%7D', $('.selectpicker').val()).replace('%7BsearchString%7D', $('#txtSearch').val());;
+  });
+
+</script>

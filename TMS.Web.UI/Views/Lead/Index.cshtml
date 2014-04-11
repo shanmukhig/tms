@@ -1,7 +1,7 @@
 ﻿@using System.Reflection
 @using TMS.Entities
 @using TMS.Web.UI.Controllers
-@model TMS.Entities.Lead
+@model Lead
 
 @{
   ViewBag.Title = "Leads";
@@ -21,8 +21,8 @@
             <option>@propertyInfo.Name</option>
           }
         </select>
-        <input type="text" class="form-control" placeholder="Search Leads..." id="txtSearch">
-        <span class="btn btn-outline btn-success input-group-addon" id="leadSearch" data-url="@Url.Action("Search", "Lead", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
+        <input style="height: 47px;" type="text" class="form-control" placeholder="Search Leads..." id="txtSearch">
+        <span class="btn btn-outline btn-primary input-group-addon" id="leadSearch" data-url="@Url.Action("Search", "Lead", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
           <i class="glyphicon glyphicon-search"></i>
         </span>
         <span class="btn btn-outline btn-primary input-group-addon" onclick="location.href='@Url.Action("Create", "Lead")'"><i class="glyphicon glyphicon-user"></i></span>
@@ -36,7 +36,7 @@
         <table class="table table-striped table-bordered table-hover display" id="dataTables-example">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Title</th>
               <th>Lead Type</th>
               <th>Lead Source</th>
               <th>City</th>
@@ -45,31 +45,38 @@
             </tr>
           </thead>
           <tbody>
-            @foreach (Lead lead in ViewBag.Leads)
-            {
-              <tr onclick="location.href='@Url.Action("Details", "Lead" , new { id=lead.Id })'" style="cursor: pointer;">
-                <td>@lead.Salutation. @lead.LastName, @lead.FirstName</td>
-                <td>
-                  @if (@lead.LeadType.HasValue)
-                  {
-                    @Html.PascalCaseToPrettyString(@lead.LeadType)
-                  }
-                </td>
-                <td>
-                  @if (@lead.LeadSource.HasValue)
-                  {
-                    @Html.PascalCaseToPrettyString(@lead.LeadSource)
-                  }
-                </td>
-                <td>@lead.City</td>
-                <td>@lead.Country</td>
-                <td>
-                  @if (lead.ClientStatus.HasValue)
-                  {
-                    @Html.PascalCaseToPrettyString(lead.ClientStatus);
-                  }
-              </td>
-            </tr>
+            @{
+              List<Country> countries = ViewBag.Countries;
+              foreach (Lead lead in ViewBag.Leads)
+              {
+                <tr onclick="location.href='@Url.Action("Details", "Lead" , new { id=lead.Id })'" style="cursor: pointer;">
+                  <td>@lead.Salutation. @lead.LastName, @lead.FirstName</td>
+                  <td>
+                    @if (@lead.LeadType.HasValue)
+                    {
+                      @Html.PascalCaseToPrettyString(@lead.LeadType)
+                    }
+                  </td>
+                  <td>
+                    @if (@lead.LeadSource.HasValue)
+                    {
+                      @Html.PascalCaseToPrettyString(@lead.LeadSource)
+                    }
+                  </td>
+                  <td>@lead.City</td>
+                  <td>
+                    @{
+                      @countries.Single(x => x.Code == lead.Country).Name.TitleCase()
+                    }
+                  </td>
+                  <td>
+                    @if (lead.ClientStatus.HasValue)
+                    {
+                      @Html.PascalCaseToPrettyString(lead.ClientStatus);
+                    }
+                  </td>
+                </tr>
+              }
             }
           </tbody>
         </table>

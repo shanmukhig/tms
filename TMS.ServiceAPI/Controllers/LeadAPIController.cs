@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Http;
 using TMS.Business;
 using TMS.Entities;
 
@@ -10,7 +11,7 @@ namespace TMS.ServiceAPI.Controllers
   {
     private readonly IDomainService<Lead> _leadDomainService;
 
-    public LeadAPIController(IDomainService<Lead> leadDomainService)
+    public LeadAPIController(DomainService<Lead> leadDomainService)
     {
       _leadDomainService = leadDomainService;
     }
@@ -58,6 +59,7 @@ namespace TMS.ServiceAPI.Controllers
       return Request.CreateResponse(HttpStatusCode.Created, lead);
     }
 
+    [HttpPut]
     public override HttpResponseMessage Update(Lead resource)
     {
       //TODO: need to find out a way how can fing update failure

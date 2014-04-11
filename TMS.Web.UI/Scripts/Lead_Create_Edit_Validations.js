@@ -1,45 +1,46 @@
-﻿$('#courseRequiredForm').validate({
-  //onkeyup: false,
-  //onfocusout: false,
+﻿$('#bestTimetoContactForm').validate({
   rules: {
-    CourseName: { required: true },
-    ServiceRequired: { required: true },
-    AmountQuoted: { required: true, number: true }
+    BestTimeToContact: {required : true}
   },
   messages: {
-    CourseName: { required: 'Course Name required.' },
-    ServiceRequired: { required: 'Service required.' },
-    AmountQuoted: { required: 'Amount quoted required.', number: 'Amount quoted must be a valid number.' }
+    BestTimeToContact: { required: 'Best time to Contact required.' }
   },
-  showErrors: function (errorMap, errorList) {
-    $.each(this.successList, function (index, value) {
-      $(value).popover('hide');
-      $(value).closest('div').removeClass('has-error').addClass('has-success');
-    });
-    $.each(errorList, function (index, value) {
-      $(value.element).popover({
-        animation: true,
-        trigger: 'manual',
-        placement: 'right auto',
-        content: '<span class="text-danger"><i class="glyphicon glyphicon glyphicon-exclamation-sign"></i> ' + value.message + '</span>', //value.message,
-        html: true,
-        container: $('#courseRequiredForm').children().css('modal-body'),
-      });
-      $(value.element).popover('show');
-      $(value.element).closest('div').addClass('has-error').removeClass('has-success');
-    });
-  },
+  showErrors: ScriptEngine,
   submitHandler: function (form) {
-    var sel = $('#CourseName').find('option:selected');
-    $('<li class="list-group-item"><input type="hidden" value="' + sel.val() + '" /><strong>Name: </strong>' + sel.text().split(', ')[0].split(' - ')[1] + ', <strong>Service Required: </strong> ' + pascalCaseToPrettyString($('#ServiceRequired').find('option:selected').text()) + ', <strong>Amount Quoted: </strong>' + $('#AmountQuoted').val() + '<span class="btn btn-xs btn-danger btn-outline pull-right"><i class="glyphicon glyphicon-remove"></i></span></li>')
-      .appendTo('ul#courseRequired');
-    $('#sr').modal('hide');
-    //$('#sr').remove();
-    //return true;
-    //alert("Course is a valid form!");
-    //return false;
+    $('#bt').modal('hide');
+    var sel = $('#BestTimeToContact').val();
+    if (sel == '')
+      return;
+    $('<li class="list-group-item">' + sel + '<span class="btn btn-xs btn-danger btn-outline pull-right"><i class="glyphicon glyphicon-remove"></i></span></li>')
+      .appendTo('ul#bestTimetoContact');
   }
 });
+
+$('#courseRequiredForm').validate({
+  rules: {
+    CourseId: { required: true },
+    ServiceRequired: { required: true },
+    AmountQuoted: { required: true, alphanumeric: true }
+  },
+  messages: {
+    CourseId: { required: 'Course Title required.' },
+    ServiceRequired: { required: 'Service required.' },
+    AmountQuoted: { required: 'Amount quoted required.', alphanumeric: 'Amount quoted must be a positive number.' }
+  },
+  showErrors: se,
+  submitHandler: function (form) {
+    var sel = $('#CourseId').find('option:selected');
+    if (sel.text() == 'Select One...')
+      return;
+    var txt = sel.val() + ',' + $('#ServiceRequired').find('option:selected').val() + ',' + $('#AmountQuoted').val();
+    $('<li class="list-group-item"><div class="row"><div class="col-md-11"><input type="hidden" value="' + txt + '" /><strong>Title: </strong>' + sel.text().split(', ')[0].split(' - ')[1] + ', <strong>Service Required: </strong>' + $('#ServiceRequired').find('option:selected').text().pascalCaseToPrettyString() + ', <strong>Amount Quoted: </strong>' + $('#AmountQuoted').val() + '</div><div class="col-md-1"><span class="btn btn-xs btn-danger btn-outline pull-right"><i class="glyphicon glyphicon-remove"></i></span></div></div></li>').appendTo('ul#courseRequired');
+    $('#sr').modal('hide');
+  }
+});
+
+jQuery.validator.addMethod("alphanumeric", function (value, element) {
+  return this.optional(element) || /^\d+$/i.test(value);
+}, "Letters, numbers, and underscores only please");
 
 $('#communicationDetailForm').validate({
   rules: {
@@ -50,102 +51,89 @@ $('#communicationDetailForm').validate({
     CommunicationType: { required: 'Communication type required.' },
     Uri: { required: 'ID required.' },
   },
-  showErrors: function (errorMap, errorList) {
-    $.each(this.successList, function (index, value) {
-      $(value).popover('hide');
-      $(value).closest('div').removeClass('has-error').addClass('has-success');
-    });
-    $.each(errorList, function (index, value) {
-      $(value.element).popover({
-        animation: true,
-        trigger: 'manual',
-        placement: 'right auto',
-        content: '<span class="text-danger"><i class="glyphicon glyphicon glyphicon-exclamation-sign"></i> ' + value.message + '</span>', //value.message,
-        html: true,
-        container: $('#courseRequiredForm').children().css('modal-body'),
-      });
-      $(value.element).popover('show');
-      $(value.element).closest('div').addClass('has-error').removeClass('has-success');
-    });
-  },
+  showErrors: se,
   submitHandler: function (form) {
-    $('<li class="list-group-item"><strong>' + $('#CommunicationType option:selected').text() + ': </strong>' + $('#Uri').val() + '<span class="btn btn-xs btn-danger btn-outline pull-right"><i class="glyphicon glyphicon-remove"></i></span></li>')
+    var sel = $('#CommunicationType option:selected').val();
+    if (sel == '')
+      return;
+    $('<li class="list-group-item"><strong>' + sel.pascalCaseToPrettyString() + ': </strong>' + $('#Uri').val() + '<span class="btn btn-xs btn-danger btn-outline pull-right"><i class="glyphicon glyphicon-remove"></i></span></li>')
       .appendTo('ul#communicationDetail');
     $('#cd').modal('hide');
-    $('#cd').removeData();
-    //$('.modal fade').remove();
-    //$('.modal-backdrop').remove();
-    //$('body').removeClass("modal-open");
   }
 });
 
+jQuery.validator.addMethod("ulValdator", function (value, element) {
+  return $.map($("#bestTimetoContact li"), function (i) { if ($(i).index() > 1) return new moment($(i).text(), 'dddd MMMM, DD YYYY HH:mm'); }).length > 0;
+}, "xyz");
 
 $('#leadCreateForm').validate({
   rules: {
     Salutation: { required: true },
-    FirstName: { required: true, minlength: 5 },
-    LastName: { required: true, minlength: 5 },
+    FirstName: { required: true },
+    LastName: { required: true },
     LeadType: { required: true },
     LeadSource: { required: true },
     ClientStatus: { required: true },
     PreferredCommunicationType: { required: true },
     Status: { required: true },
-    City: { required: true, minlength: 5 },
+    City: { required: true },
     Country: { required: true },
-    BestTimeToContact: { required: true }
-    //DemoDateTime: { required: true },
-    //ExpectedDateOfJoin: { required: true },
-    //CommunicationType: { required: true },
-    //Uri: { required: true, minlength: 5 }
+    bestTimetoContact: { ulValdator: true }
   },
   messages: {
     Salutation: { required: 'Salutation requried.' },
-    FirstName: { required: 'First Name required.', minlength: 'First name must be at least 5 characters long.' },
-    LastName: { required: 'Last Name required.', minlength: 'last name must be at least 5 characters long.' },
+    FirstName: { required: 'First Title required.' },
+    LastName: { required: 'Last Title required.' },
     LeadType: { required: 'Lead Type required.' },
     LeadSource: { required: 'Lead Source required.' },
     ClientStatus: { required: 'Client Status required.' },
     PreferredCommunicationType: { required: 'Preferred Comm. Type required.' },
     Status: { required: 'Status required.' },
-    //DemoDateTime: { required: 'Demo date time required.' },
-    //ExpectedDateOfJoin: { required: 'Expected Date of Join required.' },
-    City: { required: 'City required.', minlength: 'City must be at least 5 characters long.' },
-    Country: { required: 'Country required.', minlength: 'Country must be at least 5 characters long.' },
-    BestTimeToContact: { required: 'Best time to contact requied' }
-    //CommunicationType: { required: 'Communicate Type required.' },
-    //Uri: { required: 'ID required.', minlength: 'ID must be at least 5 charaters long.' }
+    City: { required: 'City required.' },
+    Country: { required: 'Country required.' },
+    bestTimetoContact: { ulValdator: 'Best time to contact should contain at least one item.' }
   },
-  showErrors: function(errorMap, errorList) {
-    $.each(this.successList, function(index, value) {
-      $(value).popover('hide');
-      $(value).closest('div').removeClass('has-error').addClass('has-success');
+  showErrors: se,
+  submitHandler: function (form) {
+    var btn = $('#btnSave');
+    btn.html('<i class="fa fa-spinner fa-spin"></i>');
+    btn.attr('disabled', true);
+
+    var lead = {
+      BestTimeToContact: $.map($("#bestTimetoContact li"), function (i) { if ($(i).index() > 1) return new moment($(i).text(), 'dddd MMMM, DD YYYY HH:mm'); }),
+      City: $('#City').val(),
+      ClientStatus: $('#ClientStatus').val(),
+      CommunicationDetails : $.map($("#communicationDetail li"), function(i) {if ($(i).index() > 1) {var a = $(i).text().split(':');return { CommunicationType: a[0], Uri: a[1] };}}),
+      Country: $('#Country').val(),
+      Courses: $.map($("#courseRequired li").find('input'), function(i) { var a = $(i).val().split(','); return { CourseId: a[0], AmountQuoted: a[2], ServiceRequired: a[1] }; }),
+      DemoDateTime: new moment($('#DemoDateTime').val(), 'dddd MMMM, DD YYYY HH:mm'),
+      Description: 'Enquiring for a course',
+      ExpectedDateOfJoin: new moment($('#ExpectedDateOfJoin').val(), 'dddd MMMM, DD YYYY'),
+      FirstName: $('#FirstName').val(),
+      LastName: $('#LastName').val(),
+      LeadSource: $('#LeadSource').val(),
+      LeadType: $('#LeadType').val(),
+      PreferredCommunicationType: $('#PreferredCommunicationType').val(),
+      ReferredBy: $('#ReferredBy').val(),
+      Salutation: $('#Salutation').val(),
+      Status: $('#Status').val(),
+    };
+    if ($('#leadCreateForm').attr('leadId') != undefined)
+      lead.Id = $('#leadCreateForm').attr('leadId');
+
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      url: $('#leadCreateForm').attr('action'),
+      data: JSON.stringify(lead),
+      success: function(data) {
+        var uri = $('#leadCreateForm').attr('action').split('/');
+        window.location = window.location.protocol + '//' + window.location.host + '/' + uri[1] + '/' + uri[2];
+      },
+      failure: function(result) {
+        alert(result);
+      }
     });
-    $.each(errorList, function(index, value) {
-      $(value.element).popover({
-        animation: true,
-        trigger: 'manual',
-        placement: 'left auto',
-        content: '<span class="text-danger"><i class="glyphicon glyphicon glyphicon-exclamation-sign"></i> ' + value.message + '</span>', //value.message,
-        html: true,
-        container: 'body',
-      });
-      $(value.element).popover('show');
-      $(value.element).closest('div').addClass('has-error').removeClass('has-success');
-    });
-  },
-  submitHandler: function(form) {
-    alert("Lead Create is a valid form!");
-    return false;
+
   }
 });
-
-//showErrors: function(errorMap, errorList) {
-//  $.each(this.validElements(), function (index, element) {
-//    var $element = $(element).closest('div');
-//    $element.data('title', '').removeClass('has-warning').addClass('has-success').tooltip('destroy');
-//  });
-//  $.each(errorList, function(index, error) {
-//    var $element = $(error.element).closest('div');
-//    $element.tooltip('destroy').data('title', error.message).addClass('has-warning').removeClass('has-success').tooltip();
-//  });
-//},

@@ -30,10 +30,10 @@ namespace TMS.ServiceAPI.DependencyResolution
       return new Container(
         expression =>
         {
-          expression.For<IDomainService<Course>>().HybridHttpOrThreadLocalScoped().Use<CourseDomainSource>();
-          expression.For<IDomainService<Lead>>().HybridHttpOrThreadLocalScoped().Use<LeadDomainService>();
-          expression.For<IDomainService<User>>().HybridHttpOrThreadLocalScoped().Use<UserDomainService>();
-          expression.For<IDomainService<Country>>().HybridHttpOrThreadLocalScoped().Use<CountryDomainService>();
+          expression.For<DomainService<Course>>().HybridHttpOrThreadLocalScoped().Use<CourseDomainSource>();
+          expression.For<DomainService<Lead>>().HybridHttpOrThreadLocalScoped().Use<LeadDomainService>();
+          expression.For<DomainService<User>>().HybridHttpOrThreadLocalScoped().Use<UserDomainService>();
+          expression.For<DomainService<Country>>().HybridHttpOrThreadLocalScoped().Use<CountryDomainService>();
 
           expression.For<DataProvider<Course>>().HybridHttpOrThreadLocalScoped().Use<CourseDataProvider>();
           expression.For<DataProvider<Lead>>().HybridHttpOrThreadLocalScoped().Use<LeadDataProvider>();

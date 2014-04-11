@@ -1,0 +1,159 @@
+﻿@using TMS.Entities
+@using TMS.Web.UI.Controllers
+@model TMS.Entities.Course
+
+@{
+  ViewBag.Title = "Course Details";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="padding-top: 15px;">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="btn-group">
+          <button class="btn btn-outline btn-info" onclick="location.href = '@Url.Action("Index", "Course")'"><i class="fa fa-arrow-left"></i></button>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-primary" onclick="location.href = '@Url.Action("Edit", "Course", new { id = @Model.Id })'"><i class="fa fa-edit"></i></button>
+          <span class="btn btn-outline btn-danger" id="deleteCourse" data-uri="@Url.Action("Delete", "Course", new { @Model.Id})"><i class="fa fa-trash-o"></i></span>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-info"><i class="fa fa-print"></i></button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-text list-group-item-info">
+            <strong>Course Details</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4 text-right"><strong>@Html.LabelFor(course => course.Title):</strong></div>
+                  <div class="col-md-8">@Model.Title</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-3 text-right"><strong>@Html.LabelFor(course => course.Description):</strong></div>
+                  <div class="col-md-9  ">@Model.Description</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-4 text-right"><strong>Duration:</strong></div>
+                  <div class="col-md-8"><i class="fa fa-clock-o fa-fw"></i>@Model.DurationInDays.ConvertToString("day")</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-3 text-right"><strong>@Html.LabelForPascal(course => course.Price):</strong></div>
+                  <div class="col-md-9  ">
+                    @if (@Model.Price.HasValue)
+                    {
+                      @Model.Price.Value.ToCurrencyString();
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li class="list-group-item  list-group-item-text list-group-item-info"><strong>Topic Details</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i></li>
+          <li class="list-group-item">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>#</td>
+                    <td><strong>Title</strong></td>
+                    <td><strong>Duration</strong></td>
+                    <td><strong>Description</strong></td>
+                  </tr>
+                </thead>
+                @if (@Model.CourseTopics != null && Model.CourseTopics.Any())
+                {
+                  foreach (CourseTopic courseTopic in Model.CourseTopics.OrderBy(topic => topic.SequenceId))
+                  {
+                    <tr>
+                      <td><i class="fa fa-plus-square"></i></td>
+                      <td class="text-right">@courseTopic.SequenceId</td>
+                      <td>@courseTopic.Title</td>
+                      <td>@courseTopic.DurationInHours.ConvertToString("hour")</td>
+                      <td>@courseTopic.Description</td>
+                    </tr>
+                    if (courseTopic.CourseTopics != null && courseTopic.CourseTopics.Any())
+                    {
+                      <tr style="display: none">
+                        <td colspan="5">
+                          <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                              @foreach (CourseTopic ct in courseTopic.CourseTopics.OrderBy(topic => topic.SequenceId))
+                              {
+                                <tr>
+                                  <td class="text-right">@ct.SequenceId</td>
+                                  <td>@ct.Title</td>
+                                  <td>@ct.DurationInHours.ConvertToString("minute")</td>
+                                  <td>@ct.Description</td>
+                                </tr>
+                              }
+                            </table>
+                          </div>
+                        </td>
+                      </tr>
+                    }
+                  }
+                }
+              </table>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Lead_Create_Edit.js")></script>
+<script type="text/javascript" language="javascript">
+
+  //  $('td i.fa-plus-square').removeClass('fa-plus-square').addClass
+
+  submitConfirm('span i.fa-trash-o', 'Do you want to discard the changes?', function () {
+    //alert($('#deleteLead').attr('data-uri'));
+    var dataUri = $('#deleteCourse');
+
+    dataUri.html('<i class="fa fa-spinner fa-spin"></i>');
+    //dataUri.attr('disabled', true);
+
+    $.ajax({
+      type: 'DELETE',
+      contentType: 'application/json',
+      url: dataUri.attr('data-uri'),
+      //data: JSON.stringify(lead),
+      success: function (data) {
+        var uri = dataUri.attr('data-uri').split('/');
+        window.location = window.location.protocol + '//' + window.location.host + '/' + uri[1] + '/' + uri[2];
+      },
+      failure: function (result) {
+        alert(result);
+      }
+    });
+  });
+
+  //$(document).ready(function () {
+  //  //alert($('td i.fa-minus-square').length);
+  //  $('td i.fa-minus-square').each(function(i) {
+  //    alert($(i));
+  //    $(i).click();
+  //  });
+  //});
+
+</script>

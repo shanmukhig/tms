@@ -18,16 +18,24 @@ namespace TMS.Web.UI.Controllers
 
     public ActionResult Index()
     {
-      _courseWebService.Get((int?)null);
+      ViewBag.Courses = _courseWebService.Get((int?) null);
       return View();
+    }
+
+    public ActionResult Search(string searchString, string searchFields)
+    {
+      if (string.IsNullOrWhiteSpace(searchString) || string.IsNullOrWhiteSpace(searchFields))
+        RedirectToAction("Index");
+      ViewBag.Courses = _courseWebService.Get(searchString, searchFields);
+      return View("Index");
     }
 
     //
     // GET: /Course/Details/5
 
-    public ActionResult Details(int id)
+    public ActionResult Details(string id)
     {
-      return View();
+      return View(_courseWebService.Get(id));
     }
 
     //
@@ -35,77 +43,58 @@ namespace TMS.Web.UI.Controllers
 
     public ActionResult Create()
     {
-      return View();
+      return View(new Course());
     }
 
     //
     // POST: /Course/Create
 
     [HttpPost]
-    public ActionResult Create(FormCollection collection)
+    public ActionResult CreateCourse(Course course)
     {
       try
       {
-        // TODO: Add insert logic here
-
-        return RedirectToAction("Index");
+        _courseWebService.Create(course);
+        return null;
       }
       catch
       {
-        return View();
+        return View("Create", course);
       }
     }
 
     //
     // GET: /Course/Edit/5
 
-    public ActionResult Edit(int id)
+    public ActionResult Edit(string id)
     {
-      return View();
+      return View("Edit", _courseWebService.Get(id));
     }
 
     //
     // POST: /Course/Edit/5
 
     [HttpPost]
-    public ActionResult Edit(int id, FormCollection collection)
+    public ActionResult EditCourse(Course course)
     {
       try
       {
-        // TODO: Add update logic here
-
-        return RedirectToAction("Index");
+        _courseWebService.Update(course);
+        return null;
       }
       catch
       {
-        return View();
+        return View("Edit", course);
       }
     }
 
     //
     // GET: /Course/Delete/5
 
-    public ActionResult Delete(int id)
+    public ActionResult Delete(string id)
     {
-      return View();
-    }
-
-    //
-    // POST: /Course/Delete/5
-
-    [HttpPost]
-    public ActionResult Delete(int id, FormCollection collection)
-    {
-      try
-      {
-        // TODO: Add delete logic here
-
-        return RedirectToAction("Index");
-      }
-      catch
-      {
-        return View();
-      }
+      _courseWebService.Delete(id);
+      return View("Index");
     }
   }
 }

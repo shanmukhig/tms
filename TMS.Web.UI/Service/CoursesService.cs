@@ -11,7 +11,7 @@ namespace TMS.Web.UI.Service
       throw new NotImplementedException();
     }
 
-    public override Course Get(string Id)
+    public override Course Get(string id)
     {
       throw new NotImplementedException();
     }
@@ -26,7 +26,7 @@ namespace TMS.Web.UI.Service
       throw new NotImplementedException();
     }
 
-    public override void Delete(string Id)
+    public override void Delete(string id)
     {
       throw new NotImplementedException();
     }

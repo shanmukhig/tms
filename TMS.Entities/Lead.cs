@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace TMS.Entities
@@ -18,7 +17,7 @@ namespace TMS.Entities
     public IEnumerable<CourseRequested> Courses { get; set; }
     public DateTime? ExpectedDateOfJoin { get; set; }
     public DateTime? DemoDateTime { get; set; }
-    public List<DateTime> BestTimeToContact { get; set; }
+    public IEnumerable<DateTime> BestTimeToContact { get; set; }
     public string City { get; set; }
     public string Country { get; set; }
     public ClientStatus? ClientStatus { get; set; }
@@ -30,7 +29,7 @@ namespace TMS.Entities
   public class CourseRequested
   {
     public string CourseId { get; set; }
-    public string CourseName { get; set; }
+    //public string CourseName { get; set; }
     public decimal? AmountQuoted { get; set; }
     public ServiceRequired? ServiceRequired { get; set; }
   }

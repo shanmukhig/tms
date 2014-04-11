@@ -20,6 +20,33 @@ namespace TMS.Web.UI.Service
       return response.StatusCode == HttpStatusCode.OK ? response : null;
     }
 
+    private static Response CreateUpdateEntity(T entity, HttpMethod httpMethod, HttpStatusCode statusCode)
+    {
+      Response response = new WebRequest().HttpMethod(httpMethod)
+        .Url(string.Format(ConfigurationManager.AppSettings["baseUri"], typeof(T).Name, string.Empty))
+        .ContentType(ContentType.Json)
+        .PostBody(JsonConvert.SerializeObject(entity)).PostResponse();
+      return response.StatusCode == statusCode ? response : null;
+    }
+
+    private static Response DeleteEntity(string criteria)
+    {
+      Response response = new WebRequest().HttpMethod(HttpMethod.Delete)
+        .Url(string.Format(ConfigurationManager.AppSettings["baseUri"], typeof(T).Name, criteria))
+        .ContentType(ContentType.Json).PostResponse();
+      return response.StatusCode == HttpStatusCode.OK ? response : null;
+    }
+
+    private static Response PostEntity(T entity)
+    {
+      return CreateUpdateEntity(entity, HttpMethod.Post, HttpStatusCode.Created);
+    }
+
+    private static Response PutEntity(T entity)
+    {
+      return CreateUpdateEntity(entity, HttpMethod.Put, HttpStatusCode.OK);
+    }
+
     private static IEnumerable<T> SerializeCollection(Response response)
     {
       using (StreamReader reader = new StreamReader(response.Content))
@@ -48,25 +75,27 @@ namespace TMS.Web.UI.Service
       return response != null ? SerializeCollection(response) : null;
     }
 
-    public virtual T Get(string Id)
+    public virtual T Get(string id)
     {
-      Response response = GetEntities(string.Format("/{0}", Id));
+      Response response = GetEntities(string.Format("/{0}", id));
       return response != null ? Serialize(response) : null;
     }
 
     public virtual T Create(T resource)
     {
-      throw new NotImplementedException();
+      return Serialize(PostEntity(resource));
     }
 
     public virtual T Update(T resource)
     {
-      throw new NotImplementedException();
+      return Serialize(PutEntity(resource));
     }
 
-    public virtual void Delete(string Id)
+    public virtual void Delete(string id)
     {
-      throw new NotImplementedException();
+      Response response = DeleteEntity(string.Format("/{0}", id));
+      if (response.StatusCode != HttpStatusCode.OK)
+        throw new InvalidDataException("Failed to delete lead");
     }
   }
 }

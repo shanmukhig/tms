@@ -75,7 +75,7 @@ namespace TMS.Web.UI
           "~/Scripts/bootstrap-confirm.min.js",
           "~/Scripts/jquery.validate.min.js",
           "~/Scripts/bootstrap-dialog.min.js",
-          "~/Scripts/jquery.validate.bootstrap.popover.min.js"
+          "~/Scripts/bootstrap-spinedit.js"
         );
 
       Bundle styleBundle = new StyleBundle("~/Content")
@@ -92,9 +92,9 @@ namespace TMS.Web.UI
           "~/Content/sb-admin.css",
           "~/Content/timeline.css",
           "~/Content/bootstrap-select.min.css",
-          "~/Content/bootstrap-dialog.min.css"
-          //"~/Content/dd.css"
-          );
+          "~/Content/bootstrap-dialog.min.css",
+          "~/Content/bootstrap-spinedit.css"
+        );
 
       bundleCollection.Add(scriptBundle);
       bundleCollection.Add(styleBundle);

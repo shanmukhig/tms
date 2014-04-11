@@ -15,12 +15,39 @@
           <h4 class="modal-title" id="titleSR">Course Required</h4>
         </div>
         <div class="modal-body">
-          <strong>Name</strong>
-          @Html.DropDownListFor(requested => requested.CourseName, ViewBag.Courses as IEnumerable<SelectListItem>, "Select One...", new { @class = "form-control" })
-          @Html.LabelFor(detail => detail.ServiceRequired)
-          @Html.EnumDropDownListFor(detail => detail.ServiceRequired)
-          @Html.LabelFor(detail => detail.AmountQuoted)
-          @Html.TextBoxFor(detail => detail.AmountQuoted, new { @class = "form-control" })
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 text-right padding-top"><strong>Title:</strong></div>
+                <div class="col-md-9">
+                  @{
+                    List<Course> courses = ViewBag.Courses;
+                    IEnumerable<SelectListItem> selectListItems =
+                      from c in courses
+                      select new SelectListItem
+                      {
+                        Selected = false,
+                        Text = string.Format("Title - {0}, Duration(days): {1}, Price: {2}", c.Title, c.DurationInDays, c.Price),
+                        Value = c.Id
+                      };
+                  }
+                  @Html.DropDownListFor(requested => requested.CourseId, selectListItems, "Select One...", new { @class = "form-control" })
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 text-right padding-top">@Html.LabelFor(detail => detail.ServiceRequired)</div>
+                <div class="col-md-9">@Html.EnumDropDownListFor(detail => detail.ServiceRequired)</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-3 text-right padding-top">@Html.LabelFor(detail => detail.AmountQuoted)</div>
+                <div class="col-md-9">@Html.TextBoxFor(detail => detail.AmountQuoted, new { @class = "form-control" })</div>
+              </div>
+            </li>
+          </ul>
         </div>
         <div class="modal-footer">
           <span class="btn btn-outline btn-primary" id="ServiceRequiredSave"><i class="glyphicon glyphicon-check"></i></span>

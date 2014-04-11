@@ -5,7 +5,7 @@ namespace TMS.Web.UI.Service
 {
   public class CountryService : WebService<Country>
   {
-    public override Country Get(string Id)
+    public override Country Get(string id)
     {
       throw new NotImplementedException();
     }
@@ -20,7 +20,7 @@ namespace TMS.Web.UI.Service
       throw new NotImplementedException();
     }
 
-    public override void Delete(string Id)
+    public override void Delete(string id)
     {
       throw new NotImplementedException();
     }

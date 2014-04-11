@@ -104,7 +104,7 @@ namespace TMS.Validations
     {
       RuleFor(course => course.Description).Length(1, 255);
       RuleFor(course => course.DurationInDays).NotEmpty().InclusiveBetween(1, 1000).When(course => course.DurationInDays.HasValue);
-      RuleFor(course => course.Name).NotEmpty().Length(1, 255);
+      RuleFor(course => course.Title).NotEmpty().Length(1, 255);
       RuleFor(course => course.Status).ValidEnum();
       RuleFor(course => course.CourseTopics).SetCollectionValidator(new CourseTopicsValidator());
       RuleFor(course => course.Price).NotEmpty().InclusiveBetween(0, 10000);
@@ -115,8 +115,8 @@ namespace TMS.Validations
   {
     public CourseTopicsValidator()
     {
-      RuleFor(topic => topic.Duration).NotEmpty().Length(1, 255);
-      RuleFor(topic => topic.Progress).ValidEnum();
+      //RuleFor(topic => topic.DurationInHours).NotEmpty().Length(1, 255);
+      //RuleFor(topic => topic.Progress).ValidEnum();
       RuleFor(topic => topic.Title).NotEmpty().Length(1, 255);
     }
   }

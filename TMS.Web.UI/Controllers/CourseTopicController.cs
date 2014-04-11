@@ -1,33 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using TMS.Entities;
-using TMS.Web.UI.Service;
 
 namespace TMS.Web.UI.Controllers
 {
-    public class CourseRequestedController : Controller
+    public class CourseTopicController : Controller
     {
-      private readonly IWebService<Course> _courseWebService;
-
-      public CourseRequestedController(WebService<Course> courseWebService)
-      {
-        _courseWebService = courseWebService;
-      }
-
-      //
-        // GET: /CourseRequested/
+        //
+        // GET: /CourseTopic/
 
         public ActionResult Index()
         {
-          IEnumerable<SelectListItem> courses = _courseWebService.Get((int?)null).Select(course => new SelectListItem {Value = course.Id, Text = course.Title});
-          //ViewData["Courses"] = courses;
-          ViewBag.Courses = courses;
-          return View();
+            return View();
         }
 
         //
-        // GET: /CourseRequested/Details/5
+        // GET: /CourseTopic/Details/5
 
         public ActionResult Details(int id)
         {
@@ -35,7 +25,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // GET: /CourseRequested/Create
+        // GET: /CourseTopic/Create
 
         public ActionResult Create()
         {
@@ -43,7 +33,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // POST: /CourseRequested/Create
+        // POST: /CourseTopic/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -61,7 +51,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // GET: /CourseRequested/Edit/5
+        // GET: /CourseTopic/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -69,7 +59,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // POST: /CourseRequested/Edit/5
+        // POST: /CourseTopic/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -87,7 +77,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // GET: /CourseRequested/Delete/5
+        // GET: /CourseTopic/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -95,7 +85,7 @@ namespace TMS.Web.UI.Controllers
         }
 
         //
-        // POST: /CourseRequested/Delete/5
+        // POST: /CourseTopic/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

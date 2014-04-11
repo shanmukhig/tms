@@ -106,23 +106,472 @@ namespace TMS.ServiceAPI.Tests
     [TestMethod]
     public void TestMethod1()
     {
-
       IList<Course> courses = Builder<Course>.CreateListOfSize(1).All().Do(c =>
       {
-        c.Description = "mongoDB Training";
-        c.DurationInDays = 180;
+        c.Description = "Algorithms and Data Structures - Part 1";
+        c.DurationInDays = 2;
+        c.Price = 240;
+        c.Title = "Algorithms and Data Structures - Part 1";
         c.CourseTopics = new List<CourseTopic>
         {
           new CourseTopic
           {
-            Duration = "10hrs",
-            Progress = CourseDetailStatus.NotStarted,
-            IsTagged = false
+            SequenceId = 1,
+            DurationInHours = 6,
+            Title = "Algorithms and Data Structures 1",
+            Description = "Algorithms and Data Structures 1",
+            CourseTopics = new List<CourseTopic>
+            {
+              new CourseTopic
+              {
+                SequenceId = 1,
+                DurationInHours = 2,
+                Title = "Introduction",
+                Description = "Introduction",
+              },
+              new CourseTopic
+              {
+                SequenceId = 2,
+                DurationInHours = 25,
+                Title = "Node Chains",
+                Description = "Node Chains",
+              },
+              new CourseTopic
+              {
+                SequenceId = 3,
+                DurationInHours = 45,
+                Title = "Code: Node Chains",
+                Description = "Code: Node Chains",
+              },
+              new CourseTopic
+              {
+                SequenceId = 4,
+                DurationInHours = 2,
+                Title = "Linked List",
+                Description = "Linked List",
+              },
+              new CourseTopic
+              {
+                SequenceId = 5,
+                DurationInHours = 25,
+                Title = "Add Items",
+                Description = "Add Items",
+              },
+              new CourseTopic
+              {
+                SequenceId = 6,
+                DurationInHours = 45,
+                Title = "Remove Items",
+                Description = "Remove Items",
+              },
+              new CourseTopic
+              {
+                SequenceId = 7,
+                DurationInHours = 2,
+                Title = "Enumerate",
+                Description = "Enumerate",
+              },
+              new CourseTopic
+              {
+                SequenceId = 8,
+                DurationInHours = 25,
+                Title = "Code: Singly Linked List",
+                Description = "Code: Singly Linked List",
+              },
+              new CourseTopic
+              {
+                SequenceId = 9,
+                DurationInHours = 45,
+                Title = "Doubly Linked List",
+                Description = "Doubly Linked List",
+              },
+              new CourseTopic
+              {
+                SequenceId = 10,
+                DurationInHours = 2,
+                Title = "Code: Doubly Linked List",
+                Description = "Code: Doubly Linked List",
+              },
+              new CourseTopic
+              {
+                SequenceId = 11,
+                DurationInHours = 25,
+                Title = "Modern Implementations",
+                Description = "Modern Implementations",
+              },
+              new CourseTopic
+              {
+                SequenceId = 12,
+                DurationInHours = 45,
+                Title = "Summary and References",
+                Description = "Summary and References",
+              }
+            },
           },
+          new CourseTopic
+          {
+            SequenceId = 2,
+            DurationInHours = 10,
+            Title = "Algorithms and Data Structures: Stack",
+            Description = "Algorithms and Data Structures: Stack",
+            CourseTopics = new List<CourseTopic>
+            {
+              new CourseTopic
+              {
+                SequenceId = 1,
+                DurationInHours = 37,
+                Title = "Introduction",
+                Description = "Introduction",
+              },
+              new CourseTopic
+              {
+                SequenceId = 2,
+                DurationInHours = 27,
+                Title = "Push & Pop",
+                Description = "Push & Pop",
+              },
+              new CourseTopic
+              {
+                SequenceId = 3,
+                DurationInHours = 75,
+                Title = "Stack (Linked List)",
+                Description = "Stack (Linked List)",
+              },
+              new CourseTopic
+              {
+                SequenceId = 4,
+                DurationInHours = 56,
+                Title = "Code: Stack (Linked List)",
+                Description = "Code: Stack (Linked List)",
+              },
+              new CourseTopic
+              {
+                SequenceId = 5,
+                DurationInHours = 37,
+                Title = "Stack (Array)",
+                Description = "Stack (Array)",
+              },
+              new CourseTopic
+              {
+                SequenceId = 6,
+                DurationInHours = 26,
+                Title = "Code: Stack (Array)",
+                Description = "Code: Stack (Array)",
+              },
+              new CourseTopic
+              {
+                SequenceId = 7,
+                DurationInHours = 26,
+                Title = "Demo: Postfix Calculator",
+                Description = "Demo: Postfix Calculator",
+              },
+              new CourseTopic
+              {
+                SequenceId = 8,
+                DurationInHours = 56,
+                Title = "Demo: Undo",
+                Description = "Demo: Undo",
+              },
+              new CourseTopic
+              {
+                SequenceId = 9,
+                DurationInHours = 37,
+                Title = "Other Implementations",
+                Description = "Other Implementations",
+              },
+              new CourseTopic
+              {
+                SequenceId = 10,
+                DurationInHours = 26,
+                Title = "Summary and Reference",
+                Description = "Summary and Reference",
+              },
+            }
+          },
+          new CourseTopic
+          {
+            Title = "Algorithms and Data Structures 1: Queue",
+            Description = "Algorithms and Data Structures 1: Queue",
+            SequenceId = 3,
+            DurationInHours = 15,
+            CourseTopics = new List<CourseTopic>
+            {
+              new CourseTopic
+              {
+                Title = "Introduction",
+                Description = "Introduction",
+                DurationInHours = 25,
+                SequenceId = 1,
+              },
+              new CourseTopic
+              {
+                Title = "Enqueue and Dequeue",
+                Description = "Enqueue and Dequeue",
+                DurationInHours = 46,
+                SequenceId = 2
+              },
+              new CourseTopic
+              {
+                Title = "Linked List Implementation",
+                Description = "Linked List Implementation",
+                DurationInHours = 56,
+                SequenceId = 3,
+              },
+              new CourseTopic
+              {
+                Title = "Code: Linked List Implementation",
+                Description = "Code: Linked List Implementation",
+                DurationInHours = 45,
+                SequenceId = 4
+              },
+              new CourseTopic
+              {
+                Title = "Demo: Queue",
+                Description = "Demo: Queue",
+                DurationInHours = 36,
+                SequenceId = 5,
+              },
+              new CourseTopic
+              {
+                Title = "Array Implementation",
+                Description = "Array Implementation",
+                DurationInHours = 46,
+                SequenceId = 6
+              },
+              new CourseTopic
+              {
+                Title = "Code: Array Implementation",
+                Description = "Code: Array Implementation",
+                DurationInHours = 25,
+                SequenceId = 7,
+              },
+              new CourseTopic
+              {
+                Title = "Priority Queue",
+                Description = "Priority Queue",
+                DurationInHours = 46,
+                SequenceId = 8
+              },
+              new CourseTopic
+              {
+                Title = "Code: Priority Queue",
+                Description = "Code: Priority Queue",
+                DurationInHours = 58,
+                SequenceId = 9
+              },
+              new CourseTopic
+              {
+                Title = "Demo: Priority Queue",
+                Description = "Demo: Priority Queue",
+                DurationInHours = 52,
+                SequenceId = 10,
+              },
+              new CourseTopic
+              {
+                Title = ".NET and C++",
+                Description = ".NET and C++",
+                DurationInHours = 31,
+                SequenceId = 11
+              },
+              new CourseTopic
+              {
+                Title = "Summary and Reference",
+                Description = "Summary and Reference",
+                DurationInHours = 43,
+                SequenceId = 12,
+              }
+            }
+          },
+          new CourseTopic
+          {
+            Description = "Algorithms and Data Structures: Binary Trees",
+            Title = "Algorithms and Data Structures: Binary Trees",
+            DurationInHours = 16,
+            SequenceId = 4,
+            CourseTopics = new List<CourseTopic>
+            {
+              new CourseTopic
+              {
+                Description = "Introduction",
+                Title = "Introduction",
+                DurationInHours = 41,
+                SequenceId = 1
+              },
+              new CourseTopic
+              {
+                Description = "What is a Tree?",
+                Title = "What is a Tree?",
+                DurationInHours = 27,
+                SequenceId = 2
+              },
+              new CourseTopic
+              {
+                Description = "Binary Trees",
+                Title = "Binary Trees",
+                DurationInHours = 32,
+                SequenceId = 3
+              },
+              new CourseTopic
+              {
+                Description = "Adding Data",
+                Title = "Adding Data",
+                DurationInHours = 36,
+                SequenceId = 4
+              },
+              new CourseTopic
+              {
+                Description = "Finding Data",
+                Title = "Finding Data",
+                DurationInHours = 43,
+                SequenceId = 5
+              },
+              new CourseTopic
+              {
+                Description = "Removing Data",
+                Title = "Removing Data",
+                DurationInHours = 19,
+                SequenceId = 6
+              },
+              new CourseTopic
+              {
+                Description = "Traversals",
+                Title = "Traversals",
+                DurationInHours = 51,
+                SequenceId = 7
+              },
+              new CourseTopic
+              {
+                Description = "Code: Binary Tree",
+                Title = "Code: Binary Tree",
+                DurationInHours = 43,
+                SequenceId = 8
+              },
+              new CourseTopic
+              {
+                Description = "Demo: Sorting Words",
+                Title = "Demo: Sorting Words",
+                DurationInHours = 29,
+                SequenceId = 9
+              },
+              new CourseTopic
+              {
+                Description = "Summary",
+                Title = "Summary",
+                DurationInHours = 36,
+                SequenceId = 10
+              }
+            }
+          },
+          new CourseTopic
+          {
+            Description = "Algorithms and Data Structures: Hash Tables",
+            Title = "Algorithms and Data Structures: Hash Tables",
+            DurationInHours = 16,
+            SequenceId = 5,
+            CourseTopics = new List<CourseTopic>
+            {
+              new CourseTopic
+              {
+                Description = "Introduction",
+                Title = "Introduction",
+                DurationInHours = 41,
+                SequenceId = 1
+              },
+              new CourseTopic
+              {
+                Description = "Hash Tables",
+                Title = "Hash Tables",
+                DurationInHours = 27,
+                SequenceId = 2
+              },
+              new CourseTopic
+              {
+                Description = "Hashing Overview",
+                Title = "Hashing Overview",
+                DurationInHours = 32,
+                SequenceId = 3
+              },
+              new CourseTopic
+              {
+                Description = "String Hashing",
+                Title = "String Hashing",
+                DurationInHours = 36,
+                SequenceId = 4
+              },
+              new CourseTopic
+              {
+                Description = "Demo: String Hashing",
+                Title = "Demo: String Hashing",
+                DurationInHours = 43,
+                SequenceId = 5
+              },
+              new CourseTopic
+              {
+                Description = "Adding Data",
+                Title = "Adding Data",
+                DurationInHours = 19,
+                SequenceId = 6
+              },
+              new CourseTopic
+              {
+                Description = "Handling Collisions",
+                Title = "Handling Collisions",
+                DurationInHours = 51,
+                SequenceId = 7
+              },
+              new CourseTopic
+              {
+                Description = "Growing the Table",
+                Title = "Growing the Table",
+                DurationInHours = 43,
+                SequenceId = 8
+              },
+              new CourseTopic
+              {
+                Description = "Removing Data",
+                Title = "Removing Data",
+                DurationInHours = 29,
+                SequenceId = 9
+              },
+              new CourseTopic
+              {
+                Description = "Finding Data",
+                Title = "Finding Data",
+                DurationInHours = 36,
+                SequenceId = 10
+              },
+
+              new CourseTopic
+              {
+                Description = "Enumerating",
+                Title = "Enumerating",
+                DurationInHours = 51,
+                SequenceId = 11
+              },
+              new CourseTopic
+              {
+                Description = "Code: Hash Table",
+                Title = "Code: Hash Table",
+                DurationInHours = 43,
+                SequenceId = 12
+              },
+              new CourseTopic
+              {
+                Description = "Demo: Counting Words",
+                Title = "Demo: Counting Words",
+                DurationInHours = 29,
+                SequenceId = 13
+              },
+              new CourseTopic
+              {
+                Description = "Summary",
+                Title = "Summary",
+                DurationInHours = 36,
+                SequenceId = 14
+              }
+            }
+          }
         };
-        c.Name = "mongoDB Traning";
-        c.Price = 120;
-        c.Status = Status.Active;
       }).Build();
 
       //IList<Course> courses =
@@ -148,7 +597,7 @@ namespace TMS.ServiceAPI.Tests
       //          Title = "What is CLR?"
       //        }
       //      };
-      //      c.Name = ".NET Fundamentals";
+      //      c.Title = ".NET Fundamentals";
       //      c.Price = 120;
       //      c.Status = Status.Active;
       //    }).Build();
@@ -169,247 +618,247 @@ namespace TMS.ServiceAPI.Tests
 
       List<string> countries = new List<string>
       {
-        "{'Code':'AF', 'Name':'AFGHANISTAN'}",
-        "{'Code':'AL', 'Name':'ALBANIA'}",
-        "{'Code':'DZ', 'Name':'ALGERIA'}",
-        "{'Code':'AS', 'Name':'AMERICAN SAMOA'}",
-        "{'Code':'AD', 'Name':'ANDORRA'}",
-        "{'Code':'AO', 'Name':'ANGOLA'}",
-        "{'Code':'AI', 'Name':'ANGUILLA'}",
-        "{'Code':'AQ', 'Name':'ANTARCTICA'}",
-        "{'Code':'AG', 'Name':'ANTIGUA AND BARBUDA'}",
-        "{'Code':'AR', 'Name':'ARGENTINA'}",
-        "{'Code':'AM', 'Name':'ARMENIA'}",
-        "{'Code':'AW', 'Name':'ARUBA'}",
-        "{'Code':'AU', 'Name':'AUSTRALIA'}",
-        "{'Code':'AT', 'Name':'AUSTRIA'}",
-        "{'Code':'AZ', 'Name':'AZERBAIJAN'}",
-        "{'Code':'BS', 'Name':'BAHAMAS'}",
-        "{'Code':'BH', 'Name':'BAHRAIN'}",
-        "{'Code':'BD', 'Name':'BANGLADESH'}",
-        "{'Code':'BB', 'Name':'BARBADOS'}",
-        "{'Code':'BY', 'Name':'BELARUS'}",
-        "{'Code':'BE', 'Name':'BELGIUM'}",
-        "{'Code':'BZ', 'Name':'BELIZE'}",
-        "{'Code':'BJ', 'Name':'BENIN'}",
-        "{'Code':'BM', 'Name':'BERMUDA'}",
-        "{'Code':'BT', 'Name':'BHUTAN'}",
-        "{'Code':'BO', 'Name':'BOLIVIA'}",
-        "{'Code':'BA', 'Name':'BOSNIA AND HERZEGOWINA'}",
-        "{'Code':'BW', 'Name':'BOTSWANA'}",
-        "{'Code':'BV', 'Name':'BOUVET ISLAND'}",
-        "{'Code':'BR', 'Name':'BRAZIL'}",
-        "{'Code':'IO', 'Name':'BRITISH INDIAN OCEAN TERRITORY'}",
-        "{'Code':'BN', 'Name':'BRUNEI DARUSSALAM'}",
-        "{'Code':'BG', 'Name':'BULGARIA'}",
-        "{'Code':'BF', 'Name':'BURKINA FASO'}",
-        "{'Code':'BI', 'Name':'BURUNDI'}",
-        "{'Code':'KH', 'Name':'CAMBODIA'}",
-        "{'Code':'CM', 'Name':'CAMEROON'}",
-        "{'Code':'CA', 'Name':'CANADA'}",
-        "{'Code':'CV', 'Name':'CAPE VERDE'}",
-        "{'Code':'KY', 'Name':'CAYMAN ISLANDS'}",
-        "{'Code':'CF', 'Name':'CENTRAL AFRICAN REPUBLIC'}",
-        "{'Code':'TD', 'Name':'CHAD'}",
-        "{'Code':'CL', 'Name':'CHILE'}",
-        "{'Code':'CN', 'Name':'CHINA'}",
-        "{'Code':'CX', 'Name':'CHRISTMAS ISLAND'}",
-        "{'Code':'CC', 'Name':'COCOS (KEELING) ISLANDS'}",
-        "{'Code':'CO', 'Name':'COLOMBIA'}",
-        "{'Code':'KM', 'Name':'COMOROS'}",
-        "{'Code':'CG', 'Name':'CONGO'}",
-        "{'Code':'CD', 'Name':'CONGO, THE DRC'}",
-        "{'Code':'CK', 'Name':'COOK ISLANDS'}",
-        "{'Code':'CR', 'Name':'COSTA RICA'}",
-        "{'Code':'CI', 'Name':'COTE D'IVOIRE'}",
-        "{'Code':'HR', 'Name':'CROATIA (local name: Hrvatska)'}",
-        "{'Code':'CU', 'Name':'CUBA'}",
-        "{'Code':'CY', 'Name':'CYPRUS'}",
-        "{'Code':'CZ', 'Name':'CZECH REPUBLIC'}",
-        "{'Code':'DK', 'Name':'DENMARK'}",
-        "{'Code':'DJ', 'Name':'DJIBOUTI'}",
-        "{'Code':'DM', 'Name':'DOMINICA'}",
-        "{'Code':'DO', 'Name':'DOMINICAN REPUBLIC'}",
-        "{'Code':'TP', 'Name':'EAST TIMOR'}",
-        "{'Code':'EC', 'Name':'ECUADOR'}",
-        "{'Code':'EG', 'Name':'EGYPT'}",
-        "{'Code':'SV', 'Name':'EL SALVADOR'}",
-        "{'Code':'GQ', 'Name':'EQUATORIAL GUINEA'}",
-        "{'Code':'ER', 'Name':'ERITREA'}",
-        "{'Code':'EE', 'Name':'ESTONIA'}",
-        "{'Code':'ET', 'Name':'ETHIOPIA'}",
-        "{'Code':'FK', 'Name':'FALKLAND ISLANDS (MALVINAS)'}",
-        "{'Code':'FO', 'Name':'FAROE ISLANDS'}",
-        "{'Code':'FJ', 'Name':'FIJI'}",
-        "{'Code':'FI', 'Name':'FINLAND'}",
-        "{'Code':'FR', 'Name':'FRANCE'}",
-        "{'Code':'FX', 'Name':'FRANCE, METROPOLITAN'}",
-        "{'Code':'GF', 'Name':'FRENCH GUIANA'}",
-        "{'Code':'PF', 'Name':'FRENCH POLYNESIA'}",
-        "{'Code':'TF', 'Name':'FRENCH SOUTHERN TERRITORIES'}",
-        "{'Code':'GA', 'Name':'GABON'}",
-        "{'Code':'GM', 'Name':'GAMBIA'}",
-        "{'Code':'GE', 'Name':'GEORGIA'}",
-        "{'Code':'DE', 'Name':'GERMANY'}",
-        "{'Code':'GH', 'Name':'GHANA'}",
-        "{'Code':'GI', 'Name':'GIBRALTAR'}",
-        "{'Code':'GR', 'Name':'GREECE'}",
-        "{'Code':'GL', 'Name':'GREENLAND'}",
-        "{'Code':'GD', 'Name':'GRENADA'}",
-        "{'Code':'GP', 'Name':'GUADELOUPE'}",
-        "{'Code':'GU', 'Name':'GUAM'}",
-        "{'Code':'GT', 'Name':'GUATEMALA'}",
-        "{'Code':'GN', 'Name':'GUINEA'}",
-        "{'Code':'GW', 'Name':'GUINEA-BISSAU'}",
-        "{'Code':'GY', 'Name':'GUYANA'}",
-        "{'Code':'HT', 'Name':'HAITI'}",
-        "{'Code':'HM', 'Name':'HEARD AND MC DONALD ISLANDS'}",
-        "{'Code':'VA', 'Name':'HOLY SEE (VATICAN CITY STATE)'}",
-        "{'Code':'HN', 'Name':'HONDURAS'}",
-        "{'Code':'HK', 'Name':'HONG KONG'}",
-        "{'Code':'HU', 'Name':'HUNGARY'}",
-        "{'Code':'IS', 'Name':'ICELAND'}",
-        "{'Code':'IN', 'Name':'INDIA'}",
-        "{'Code':'ID', 'Name':'INDONESIA'}",
-        "{'Code':'IR', 'Name':'IRAN (ISLAMIC REPUBLIC OF)'}",
-        "{'Code':'IQ', 'Name':'IRAQ'}",
-        "{'Code':'IE', 'Name':'IRELAND'}",
-        "{'Code':'IL', 'Name':'ISRAEL'}",
-        "{'Code':'IT', 'Name':'ITALY'}",
-        "{'Code':'JM', 'Name':'JAMAICA'}",
-        "{'Code':'JP', 'Name':'JAPAN'}",
-        "{'Code':'JO', 'Name':'JORDAN'}",
-        "{'Code':'KZ', 'Name':'KAZAKHSTAN'}",
-        "{'Code':'KE', 'Name':'KENYA'}",
-        "{'Code':'KI', 'Name':'KIRIBATI'}",
-        "{'Code':'KP', 'Name':'KOREA, D.P.R.O.'}",
-        "{'Code':'KR', 'Name':'KOREA, REPUBLIC OF'}",
-        "{'Code':'KW', 'Name':'KUWAIT'}",
-        "{'Code':'KG', 'Name':'KYRGYZSTAN'}",
-        "{'Code':'LA', 'Name':'LAOS'}",
-        "{'Code':'LV', 'Name':'LATVIA'}",
-        "{'Code':'LB', 'Name':'LEBANON'}",
-        "{'Code':'LS', 'Name':'LESOTHO'}",
-        "{'Code':'LR', 'Name':'LIBERIA'}",
-        "{'Code':'LY', 'Name':'LIBYAN ARAB JAMAHIRIYA'}",
-        "{'Code':'LI', 'Name':'LIECHTENSTEIN'}",
-        "{'Code':'LT', 'Name':'LITHUANIA'}",
-        "{'Code':'LU', 'Name':'LUXEMBOURG'}",
-        "{'Code':'MO', 'Name':'MACAU'}",
-        "{'Code':'MK', 'Name':'MACEDONIA'}",
-        "{'Code':'MG', 'Name':'MADAGASCAR'}",
-        "{'Code':'MW', 'Name':'MALAWI'}",
-        "{'Code':'MY', 'Name':'MALAYSIA'}",
-        "{'Code':'MV', 'Name':'MALDIVES'}",
-        "{'Code':'ML', 'Name':'MALI'}",
-        "{'Code':'MT', 'Name':'MALTA'}",
-        "{'Code':'MH', 'Name':'MARSHALL ISLANDS'}",
-        "{'Code':'MQ', 'Name':'MARTINIQUE'}",
-        "{'Code':'MR', 'Name':'MAURITANIA'}",
-        "{'Code':'MU', 'Name':'MAURITIUS'}",
-        "{'Code':'YT', 'Name':'MAYOTTE'}",
-        "{'Code':'MX', 'Name':'MEXICO'}",
-        "{'Code':'FM', 'Name':'MICRONESIA, FEDERATED STATES OF'}",
-        "{'Code':'MD', 'Name':'MOLDOVA, REPUBLIC OF'}",
-        "{'Code':'MC', 'Name':'MONACO'}",
-        "{'Code':'MN', 'Name':'MONGOLIA'}",
-        "{'Code':'ME', 'Name':'MONTENEGRO'}",
-        "{'Code':'MS', 'Name':'MONTSERRAT'}",
-        "{'Code':'MA', 'Name':'MOROCCO'}",
-        "{'Code':'MZ', 'Name':'MOZAMBIQUE'}",
-        "{'Code':'MM', 'Name':'MYANMAR (Burma)'}",
-        "{'Code':'NA', 'Name':'NAMIBIA'}",
-        "{'Code':'NR', 'Name':'NAURU'}",
-        "{'Code':'NP', 'Name':'NEPAL'}",
-        "{'Code':'NL', 'Name':'NETHERLANDS'}",
-        "{'Code':'AN', 'Name':'NETHERLANDS ANTILLES'}",
-        "{'Code':'NC', 'Name':'NEW CALEDONIA'}",
-        "{'Code':'NZ', 'Name':'NEW ZEALAND'}",
-        "{'Code':'NI', 'Name':'NICARAGUA'}",
-        "{'Code':'NE', 'Name':'NIGER'}",
-        "{'Code':'NG', 'Name':'NIGERIA'}",
-        "{'Code':'NU', 'Name':'NIUE'}",
-        "{'Code':'NF', 'Name':'NORFOLK ISLAND'}",
-        "{'Code':'MP', 'Name':'NORTHERN MARIANA ISLANDS'}",
-        "{'Code':'NO', 'Name':'NORWAY'}",
-        "{'Code':'OM', 'Name':'OMAN'}",
-        "{'Code':'PK', 'Name':'PAKISTAN'}",
-        "{'Code':'PW', 'Name':'PALAU'}",
-        "{'Code':'PA', 'Name':'PANAMA'}",
-        "{'Code':'PG', 'Name':'PAPUA NEW GUINEA'}",
-        "{'Code':'PY', 'Name':'PARAGUAY'}",
-        "{'Code':'PE', 'Name':'PERU'}",
-        "{'Code':'PH', 'Name':'PHILIPPINES'}",
-        "{'Code':'PN', 'Name':'PITCAIRN'}",
-        "{'Code':'PL', 'Name':'POLAND'}",
-        "{'Code':'PT', 'Name':'PORTUGAL'}",
-        "{'Code':'PR', 'Name':'PUERTO RICO'}",
-        "{'Code':'QA', 'Name':'QATAR'}",
-        "{'Code':'RE', 'Name':'REUNION'}",
-        "{'Code':'RO', 'Name':'ROMANIA'}",
-        "{'Code':'RU', 'Name':'RUSSIAN FEDERATION'}",
-        "{'Code':'RW', 'Name':'RWANDA'}",
-        "{'Code':'KN', 'Name':'SAINT KITTS AND NEVIS'}",
-        "{'Code':'LC', 'Name':'SAINT LUCIA'}",
-        "{'Code':'VC', 'Name':'SAINT VINCENT AND THE GRENADINES'}",
-        "{'Code':'WS', 'Name':'SAMOA'}",
-        "{'Code':'SM', 'Name':'SAN MARINO'}",
-        "{'Code':'ST', 'Name':'SAO TOME AND PRINCIPE'}",
-        "{'Code':'SA', 'Name':'SAUDI ARABIA'}",
-        "{'Code':'SN', 'Name':'SENEGAL'}",
-        "{'Code':'RS', 'Name':'SERBIA'}",
-        "{'Code':'SC', 'Name':'SEYCHELLES'}",
-        "{'Code':'SL', 'Name':'SIERRA LEONE'}",
-        "{'Code':'SG', 'Name':'SINGAPORE'}",
-        "{'Code':'SK', 'Name':'SLOVAKIA (Slovak Republic)'}",
-        "{'Code':'SI', 'Name':'SLOVENIA'}",
-        "{'Code':'SB', 'Name':'SOLOMON ISLANDS'}",
-        "{'Code':'SO', 'Name':'SOMALIA'}",
-        "{'Code':'ZA', 'Name':'SOUTH AFRICA'}",
-        "{'Code':'SS', 'Name':'SOUTH SUDAN'}",
-        "{'Code':'GS', 'Name':'SOUTH GEORGIA AND SOUTH S.S.'}",
-        "{'Code':'ES', 'Name':'SPAIN'}",
-        "{'Code':'LK', 'Name':'SRI LANKA'}",
-        "{'Code':'SH', 'Name':'ST. HELENA'}",
-        "{'Code':'PM', 'Name':'ST. PIERRE AND MIQUELON'}",
-        "{'Code':'SD', 'Name':'SUDAN'}",
-        "{'Code':'SR', 'Name':'SURINAME'}",
-        "{'Code':'SJ', 'Name':'SVALBARD AND JAN MAYEN ISLANDS'}",
-        "{'Code':'SZ', 'Name':'SWAZILAND'}",
-        "{'Code':'SE', 'Name':'SWEDEN'}",
-        "{'Code':'CH', 'Name':'SWITZERLAND'}",
-        "{'Code':'SY', 'Name':'SYRIAN ARAB REPUBLIC'}",
-        "{'Code':'TW', 'Name':'TAIWAN, PROVINCE OF CHINA'}",
-        "{'Code':'TJ', 'Name':'TAJIKISTAN'}",
-        "{'Code':'TZ', 'Name':'TANZANIA, UNITED REPUBLIC OF'}",
-        "{'Code':'TH', 'Name':'THAILAND'}",
-        "{'Code':'TG', 'Name':'TOGO'}",
-        "{'Code':'TK', 'Name':'TOKELAU'}",
-        "{'Code':'TO', 'Name':'TONGA'}",
-        "{'Code':'TT', 'Name':'TRINIDAD AND TOBAGO'}",
-        "{'Code':'TN', 'Name':'TUNISIA'}",
-        "{'Code':'TR', 'Name':'TURKEY'}",
-        "{'Code':'TM', 'Name':'TURKMENISTAN'}",
-        "{'Code':'TC', 'Name':'TURKS AND CAICOS ISLANDS'}",
-        "{'Code':'TV', 'Name':'TUVALU'}",
-        "{'Code':'UG', 'Name':'UGANDA'}",
-        "{'Code':'UA', 'Name':'UKRAINE'}",
-        "{'Code':'AE', 'Name':'UNITED ARAB EMIRATES'}",
-        "{'Code':'GB', 'Name':'UNITED KINGDOM'}",
-        "{'Code':'US', 'Name':'UNITED STATES'}",
-        "{'Code':'UM', 'Name':'U.S. MINOR ISLANDS'}",
-        "{'Code':'UY', 'Name':'URUGUAY'}",
-        "{'Code':'UZ', 'Name':'UZBEKISTAN'}",
-        "{'Code':'VU', 'Name':'VANUATU'}",
-        "{'Code':'VE', 'Name':'VENEZUELA'}",
-        "{'Code':'VN', 'Name':'VIET NAM'}",
-        "{'Code':'VG', 'Name':'VIRGIN ISLANDS (BRITISH)'}",
-        "{'Code':'VI', 'Name':'VIRGIN ISLANDS (U.S.)'}",
-        "{'Code':'WF', 'Name':'WALLIS AND FUTUNA ISLANDS'}",
-        "{'Code':'EH', 'Name':'WESTERN SAHARA'}",
-        "{'Code':'YE', 'Name':'YEMEN'}",
-        "{'Code':'ZM', 'Name':'ZAMBIA'}",
-        "{'Code':'ZW', 'Name':'ZIMBABWE'}"
+        "{'Code':'AF', 'Title':'AFGHANISTAN'}",
+        "{'Code':'AL', 'Title':'ALBANIA'}",
+        "{'Code':'DZ', 'Title':'ALGERIA'}",
+        "{'Code':'AS', 'Title':'AMERICAN SAMOA'}",
+        "{'Code':'AD', 'Title':'ANDORRA'}",
+        "{'Code':'AO', 'Title':'ANGOLA'}",
+        "{'Code':'AI', 'Title':'ANGUILLA'}",
+        "{'Code':'AQ', 'Title':'ANTARCTICA'}",
+        "{'Code':'AG', 'Title':'ANTIGUA AND BARBUDA'}",
+        "{'Code':'AR', 'Title':'ARGENTINA'}",
+        "{'Code':'AM', 'Title':'ARMENIA'}",
+        "{'Code':'AW', 'Title':'ARUBA'}",
+        "{'Code':'AU', 'Title':'AUSTRALIA'}",
+        "{'Code':'AT', 'Title':'AUSTRIA'}",
+        "{'Code':'AZ', 'Title':'AZERBAIJAN'}",
+        "{'Code':'BS', 'Title':'BAHAMAS'}",
+        "{'Code':'BH', 'Title':'BAHRAIN'}",
+        "{'Code':'BD', 'Title':'BANGLADESH'}",
+        "{'Code':'BB', 'Title':'BARBADOS'}",
+        "{'Code':'BY', 'Title':'BELARUS'}",
+        "{'Code':'BE', 'Title':'BELGIUM'}",
+        "{'Code':'BZ', 'Title':'BELIZE'}",
+        "{'Code':'BJ', 'Title':'BENIN'}",
+        "{'Code':'BM', 'Title':'BERMUDA'}",
+        "{'Code':'BT', 'Title':'BHUTAN'}",
+        "{'Code':'BO', 'Title':'BOLIVIA'}",
+        "{'Code':'BA', 'Title':'BOSNIA AND HERZEGOWINA'}",
+        "{'Code':'BW', 'Title':'BOTSWANA'}",
+        "{'Code':'BV', 'Title':'BOUVET ISLAND'}",
+        "{'Code':'BR', 'Title':'BRAZIL'}",
+        "{'Code':'IO', 'Title':'BRITISH INDIAN OCEAN TERRITORY'}",
+        "{'Code':'BN', 'Title':'BRUNEI DARUSSALAM'}",
+        "{'Code':'BG', 'Title':'BULGARIA'}",
+        "{'Code':'BF', 'Title':'BURKINA FASO'}",
+        "{'Code':'BI', 'Title':'BURUNDI'}",
+        "{'Code':'KH', 'Title':'CAMBODIA'}",
+        "{'Code':'CM', 'Title':'CAMEROON'}",
+        "{'Code':'CA', 'Title':'CANADA'}",
+        "{'Code':'CV', 'Title':'CAPE VERDE'}",
+        "{'Code':'KY', 'Title':'CAYMAN ISLANDS'}",
+        "{'Code':'CF', 'Title':'CENTRAL AFRICAN REPUBLIC'}",
+        "{'Code':'TD', 'Title':'CHAD'}",
+        "{'Code':'CL', 'Title':'CHILE'}",
+        "{'Code':'CN', 'Title':'CHINA'}",
+        "{'Code':'CX', 'Title':'CHRISTMAS ISLAND'}",
+        "{'Code':'CC', 'Title':'COCOS (KEELING) ISLANDS'}",
+        "{'Code':'CO', 'Title':'COLOMBIA'}",
+        "{'Code':'KM', 'Title':'COMOROS'}",
+        "{'Code':'CG', 'Title':'CONGO'}",
+        "{'Code':'CD', 'Title':'CONGO, THE DRC'}",
+        "{'Code':'CK', 'Title':'COOK ISLANDS'}",
+        "{'Code':'CR', 'Title':'COSTA RICA'}",
+        "{'Code':'CI', 'Title':'COTE D'IVOIRE'}",
+        "{'Code':'HR', 'Title':'CROATIA (local name: Hrvatska)'}",
+        "{'Code':'CU', 'Title':'CUBA'}",
+        "{'Code':'CY', 'Title':'CYPRUS'}",
+        "{'Code':'CZ', 'Title':'CZECH REPUBLIC'}",
+        "{'Code':'DK', 'Title':'DENMARK'}",
+        "{'Code':'DJ', 'Title':'DJIBOUTI'}",
+        "{'Code':'DM', 'Title':'DOMINICA'}",
+        "{'Code':'DO', 'Title':'DOMINICAN REPUBLIC'}",
+        "{'Code':'TP', 'Title':'EAST TIMOR'}",
+        "{'Code':'EC', 'Title':'ECUADOR'}",
+        "{'Code':'EG', 'Title':'EGYPT'}",
+        "{'Code':'SV', 'Title':'EL SALVADOR'}",
+        "{'Code':'GQ', 'Title':'EQUATORIAL GUINEA'}",
+        "{'Code':'ER', 'Title':'ERITREA'}",
+        "{'Code':'EE', 'Title':'ESTONIA'}",
+        "{'Code':'ET', 'Title':'ETHIOPIA'}",
+        "{'Code':'FK', 'Title':'FALKLAND ISLANDS (MALVINAS)'}",
+        "{'Code':'FO', 'Title':'FAROE ISLANDS'}",
+        "{'Code':'FJ', 'Title':'FIJI'}",
+        "{'Code':'FI', 'Title':'FINLAND'}",
+        "{'Code':'FR', 'Title':'FRANCE'}",
+        "{'Code':'FX', 'Title':'FRANCE, METROPOLITAN'}",
+        "{'Code':'GF', 'Title':'FRENCH GUIANA'}",
+        "{'Code':'PF', 'Title':'FRENCH POLYNESIA'}",
+        "{'Code':'TF', 'Title':'FRENCH SOUTHERN TERRITORIES'}",
+        "{'Code':'GA', 'Title':'GABON'}",
+        "{'Code':'GM', 'Title':'GAMBIA'}",
+        "{'Code':'GE', 'Title':'GEORGIA'}",
+        "{'Code':'DE', 'Title':'GERMANY'}",
+        "{'Code':'GH', 'Title':'GHANA'}",
+        "{'Code':'GI', 'Title':'GIBRALTAR'}",
+        "{'Code':'GR', 'Title':'GREECE'}",
+        "{'Code':'GL', 'Title':'GREENLAND'}",
+        "{'Code':'GD', 'Title':'GRENADA'}",
+        "{'Code':'GP', 'Title':'GUADELOUPE'}",
+        "{'Code':'GU', 'Title':'GUAM'}",
+        "{'Code':'GT', 'Title':'GUATEMALA'}",
+        "{'Code':'GN', 'Title':'GUINEA'}",
+        "{'Code':'GW', 'Title':'GUINEA-BISSAU'}",
+        "{'Code':'GY', 'Title':'GUYANA'}",
+        "{'Code':'HT', 'Title':'HAITI'}",
+        "{'Code':'HM', 'Title':'HEARD AND MC DONALD ISLANDS'}",
+        "{'Code':'VA', 'Title':'HOLY SEE (VATICAN CITY STATE)'}",
+        "{'Code':'HN', 'Title':'HONDURAS'}",
+        "{'Code':'HK', 'Title':'HONG KONG'}",
+        "{'Code':'HU', 'Title':'HUNGARY'}",
+        "{'Code':'IS', 'Title':'ICELAND'}",
+        "{'Code':'IN', 'Title':'INDIA'}",
+        "{'Code':'ID', 'Title':'INDONESIA'}",
+        "{'Code':'IR', 'Title':'IRAN (ISLAMIC REPUBLIC OF)'}",
+        "{'Code':'IQ', 'Title':'IRAQ'}",
+        "{'Code':'IE', 'Title':'IRELAND'}",
+        "{'Code':'IL', 'Title':'ISRAEL'}",
+        "{'Code':'IT', 'Title':'ITALY'}",
+        "{'Code':'JM', 'Title':'JAMAICA'}",
+        "{'Code':'JP', 'Title':'JAPAN'}",
+        "{'Code':'JO', 'Title':'JORDAN'}",
+        "{'Code':'KZ', 'Title':'KAZAKHSTAN'}",
+        "{'Code':'KE', 'Title':'KENYA'}",
+        "{'Code':'KI', 'Title':'KIRIBATI'}",
+        "{'Code':'KP', 'Title':'KOREA, D.P.R.O.'}",
+        "{'Code':'KR', 'Title':'KOREA, REPUBLIC OF'}",
+        "{'Code':'KW', 'Title':'KUWAIT'}",
+        "{'Code':'KG', 'Title':'KYRGYZSTAN'}",
+        "{'Code':'LA', 'Title':'LAOS'}",
+        "{'Code':'LV', 'Title':'LATVIA'}",
+        "{'Code':'LB', 'Title':'LEBANON'}",
+        "{'Code':'LS', 'Title':'LESOTHO'}",
+        "{'Code':'LR', 'Title':'LIBERIA'}",
+        "{'Code':'LY', 'Title':'LIBYAN ARAB JAMAHIRIYA'}",
+        "{'Code':'LI', 'Title':'LIECHTENSTEIN'}",
+        "{'Code':'LT', 'Title':'LITHUANIA'}",
+        "{'Code':'LU', 'Title':'LUXEMBOURG'}",
+        "{'Code':'MO', 'Title':'MACAU'}",
+        "{'Code':'MK', 'Title':'MACEDONIA'}",
+        "{'Code':'MG', 'Title':'MADAGASCAR'}",
+        "{'Code':'MW', 'Title':'MALAWI'}",
+        "{'Code':'MY', 'Title':'MALAYSIA'}",
+        "{'Code':'MV', 'Title':'MALDIVES'}",
+        "{'Code':'ML', 'Title':'MALI'}",
+        "{'Code':'MT', 'Title':'MALTA'}",
+        "{'Code':'MH', 'Title':'MARSHALL ISLANDS'}",
+        "{'Code':'MQ', 'Title':'MARTINIQUE'}",
+        "{'Code':'MR', 'Title':'MAURITANIA'}",
+        "{'Code':'MU', 'Title':'MAURITIUS'}",
+        "{'Code':'YT', 'Title':'MAYOTTE'}",
+        "{'Code':'MX', 'Title':'MEXICO'}",
+        "{'Code':'FM', 'Title':'MICRONESIA, FEDERATED STATES OF'}",
+        "{'Code':'MD', 'Title':'MOLDOVA, REPUBLIC OF'}",
+        "{'Code':'MC', 'Title':'MONACO'}",
+        "{'Code':'MN', 'Title':'MONGOLIA'}",
+        "{'Code':'ME', 'Title':'MONTENEGRO'}",
+        "{'Code':'MS', 'Title':'MONTSERRAT'}",
+        "{'Code':'MA', 'Title':'MOROCCO'}",
+        "{'Code':'MZ', 'Title':'MOZAMBIQUE'}",
+        "{'Code':'MM', 'Title':'MYANMAR (Burma)'}",
+        "{'Code':'NA', 'Title':'NAMIBIA'}",
+        "{'Code':'NR', 'Title':'NAURU'}",
+        "{'Code':'NP', 'Title':'NEPAL'}",
+        "{'Code':'NL', 'Title':'NETHERLANDS'}",
+        "{'Code':'AN', 'Title':'NETHERLANDS ANTILLES'}",
+        "{'Code':'NC', 'Title':'NEW CALEDONIA'}",
+        "{'Code':'NZ', 'Title':'NEW ZEALAND'}",
+        "{'Code':'NI', 'Title':'NICARAGUA'}",
+        "{'Code':'NE', 'Title':'NIGER'}",
+        "{'Code':'NG', 'Title':'NIGERIA'}",
+        "{'Code':'NU', 'Title':'NIUE'}",
+        "{'Code':'NF', 'Title':'NORFOLK ISLAND'}",
+        "{'Code':'MP', 'Title':'NORTHERN MARIANA ISLANDS'}",
+        "{'Code':'NO', 'Title':'NORWAY'}",
+        "{'Code':'OM', 'Title':'OMAN'}",
+        "{'Code':'PK', 'Title':'PAKISTAN'}",
+        "{'Code':'PW', 'Title':'PALAU'}",
+        "{'Code':'PA', 'Title':'PANAMA'}",
+        "{'Code':'PG', 'Title':'PAPUA NEW GUINEA'}",
+        "{'Code':'PY', 'Title':'PARAGUAY'}",
+        "{'Code':'PE', 'Title':'PERU'}",
+        "{'Code':'PH', 'Title':'PHILIPPINES'}",
+        "{'Code':'PN', 'Title':'PITCAIRN'}",
+        "{'Code':'PL', 'Title':'POLAND'}",
+        "{'Code':'PT', 'Title':'PORTUGAL'}",
+        "{'Code':'PR', 'Title':'PUERTO RICO'}",
+        "{'Code':'QA', 'Title':'QATAR'}",
+        "{'Code':'RE', 'Title':'REUNION'}",
+        "{'Code':'RO', 'Title':'ROMANIA'}",
+        "{'Code':'RU', 'Title':'RUSSIAN FEDERATION'}",
+        "{'Code':'RW', 'Title':'RWANDA'}",
+        "{'Code':'KN', 'Title':'SAINT KITTS AND NEVIS'}",
+        "{'Code':'LC', 'Title':'SAINT LUCIA'}",
+        "{'Code':'VC', 'Title':'SAINT VINCENT AND THE GRENADINES'}",
+        "{'Code':'WS', 'Title':'SAMOA'}",
+        "{'Code':'SM', 'Title':'SAN MARINO'}",
+        "{'Code':'ST', 'Title':'SAO TOME AND PRINCIPE'}",
+        "{'Code':'SA', 'Title':'SAUDI ARABIA'}",
+        "{'Code':'SN', 'Title':'SENEGAL'}",
+        "{'Code':'RS', 'Title':'SERBIA'}",
+        "{'Code':'SC', 'Title':'SEYCHELLES'}",
+        "{'Code':'SL', 'Title':'SIERRA LEONE'}",
+        "{'Code':'SG', 'Title':'SINGAPORE'}",
+        "{'Code':'SK', 'Title':'SLOVAKIA (Slovak Republic)'}",
+        "{'Code':'SI', 'Title':'SLOVENIA'}",
+        "{'Code':'SB', 'Title':'SOLOMON ISLANDS'}",
+        "{'Code':'SO', 'Title':'SOMALIA'}",
+        "{'Code':'ZA', 'Title':'SOUTH AFRICA'}",
+        "{'Code':'SS', 'Title':'SOUTH SUDAN'}",
+        "{'Code':'GS', 'Title':'SOUTH GEORGIA AND SOUTH S.S.'}",
+        "{'Code':'ES', 'Title':'SPAIN'}",
+        "{'Code':'LK', 'Title':'SRI LANKA'}",
+        "{'Code':'SH', 'Title':'ST. HELENA'}",
+        "{'Code':'PM', 'Title':'ST. PIERRE AND MIQUELON'}",
+        "{'Code':'SD', 'Title':'SUDAN'}",
+        "{'Code':'SR', 'Title':'SURINAME'}",
+        "{'Code':'SJ', 'Title':'SVALBARD AND JAN MAYEN ISLANDS'}",
+        "{'Code':'SZ', 'Title':'SWAZILAND'}",
+        "{'Code':'SE', 'Title':'SWEDEN'}",
+        "{'Code':'CH', 'Title':'SWITZERLAND'}",
+        "{'Code':'SY', 'Title':'SYRIAN ARAB REPUBLIC'}",
+        "{'Code':'TW', 'Title':'TAIWAN, PROVINCE OF CHINA'}",
+        "{'Code':'TJ', 'Title':'TAJIKISTAN'}",
+        "{'Code':'TZ', 'Title':'TANZANIA, UNITED REPUBLIC OF'}",
+        "{'Code':'TH', 'Title':'THAILAND'}",
+        "{'Code':'TG', 'Title':'TOGO'}",
+        "{'Code':'TK', 'Title':'TOKELAU'}",
+        "{'Code':'TO', 'Title':'TONGA'}",
+        "{'Code':'TT', 'Title':'TRINIDAD AND TOBAGO'}",
+        "{'Code':'TN', 'Title':'TUNISIA'}",
+        "{'Code':'TR', 'Title':'TURKEY'}",
+        "{'Code':'TM', 'Title':'TURKMENISTAN'}",
+        "{'Code':'TC', 'Title':'TURKS AND CAICOS ISLANDS'}",
+        "{'Code':'TV', 'Title':'TUVALU'}",
+        "{'Code':'UG', 'Title':'UGANDA'}",
+        "{'Code':'UA', 'Title':'UKRAINE'}",
+        "{'Code':'AE', 'Title':'UNITED ARAB EMIRATES'}",
+        "{'Code':'GB', 'Title':'UNITED KINGDOM'}",
+        "{'Code':'US', 'Title':'UNITED STATES'}",
+        "{'Code':'UM', 'Title':'U.S. MINOR ISLANDS'}",
+        "{'Code':'UY', 'Title':'URUGUAY'}",
+        "{'Code':'UZ', 'Title':'UZBEKISTAN'}",
+        "{'Code':'VU', 'Title':'VANUATU'}",
+        "{'Code':'VE', 'Title':'VENEZUELA'}",
+        "{'Code':'VN', 'Title':'VIET NAM'}",
+        "{'Code':'VG', 'Title':'VIRGIN ISLANDS (BRITISH)'}",
+        "{'Code':'VI', 'Title':'VIRGIN ISLANDS (U.S.)'}",
+        "{'Code':'WF', 'Title':'WALLIS AND FUTUNA ISLANDS'}",
+        "{'Code':'EH', 'Title':'WESTERN SAHARA'}",
+        "{'Code':'YE', 'Title':'YEMEN'}",
+        "{'Code':'ZM', 'Title':'ZAMBIA'}",
+        "{'Code':'ZW', 'Title':'ZIMBABWE'}"
       };
 
       #endregion
@@ -437,7 +886,7 @@ namespace TMS.ServiceAPI.Tests
             // Do something with response
           }
         }
-        catch (WebException ex)
+        catch (WebException)
         {
           // Handle error
         }

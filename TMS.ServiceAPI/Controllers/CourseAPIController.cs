@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Http;
 using TMS.Business;
 using TMS.Entities;
 
@@ -10,9 +11,19 @@ namespace TMS.ServiceAPI.Controllers
   {
     private readonly IDomainService<Course> _courseDomainService;
 
-    public CourseAPIController(IDomainService<Course> courseDomainService )
+    public CourseAPIController(DomainService<Course> courseDomainService)
     {
       _courseDomainService = courseDomainService;
+    }
+
+    public override HttpResponseMessage Get(string searchString, string searchFileds)
+    {
+      if (string.IsNullOrWhiteSpace(searchString) || string.IsNullOrWhiteSpace(searchFileds))
+        return Get(null);
+      IQueryable<Course> courses = _courseDomainService.Get(searchString, searchFileds);
+      if (courses == null || !courses.Any())
+        Error(HttpStatusCode.NoContent, "No Courses found for the given criteria");
+      return Request.CreateResponse(HttpStatusCode.OK, courses);
     }
 
     public override HttpResponseMessage Get(int? count)
@@ -48,6 +59,7 @@ namespace TMS.ServiceAPI.Controllers
       return Request.CreateResponse(HttpStatusCode.Created, course);
     }
 
+    [HttpPut]
     public override HttpResponseMessage Update(Course resource)
     {
       //TODO: need to find out a way how can fing update failure

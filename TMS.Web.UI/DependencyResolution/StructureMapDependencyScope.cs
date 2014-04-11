@@ -94,7 +94,7 @@ namespace TMS.Web.UI.DependencyResolution
         /// Type of instance requested.
         /// </param>
         /// <param name="key">
-        /// Name of registered service you want. May be null.
+        /// Title of registered service you want. May be null.
         /// </param>
         /// <returns>
         /// The requested service instance.

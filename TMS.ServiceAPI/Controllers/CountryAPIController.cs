@@ -10,7 +10,7 @@ namespace TMS.ServiceAPI.Controllers
   {
     private readonly IDomainService<Country> _countryDomainService;
 
-    public CountryAPIController(IDomainService<Country> countryDomainService)
+    public CountryAPIController(DomainService<Country> countryDomainService)
     {
       _countryDomainService = countryDomainService;
     }
