@@ -134,6 +134,5 @@ $('#leadCreateForm').validate({
         alert(result);
       }
     });
-
   }
 });
