@@ -71,7 +71,7 @@ function submitConfirm(controlName, text, action) {
   }
 });
 
-$('body').delegate('ul li span i.glyphicon-remove', 'click', function () {
+/*$('body').delegate('ul li span i.glyphicon-remove', 'click', function () {
   var li = $(this).closest('li');
   li.fadeOut('slow', function () { li.remove(); });
 });
@@ -106,7 +106,7 @@ $('body').delegate('i.glyphicon-chevron-up.pull-right', 'click', function (e) {
     }
     $(entry).slideToggle('slow');
   });
-});
+});*/
 
 $('body').delegate('td i.fa-plus-square', 'click', function (e) {
   $(e.target).toggleClass('fa-minus-square fa-plus-square');

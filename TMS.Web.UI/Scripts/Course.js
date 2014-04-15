@@ -58,3 +58,13 @@ $('#courseCreateForm').validate({
     return false;
   }
 });
+
+$('body').delegate('td i.fa-plus-square', 'click', function (e) {
+  $(e.target).toggleClass('fa-minus-square fa-plus-square');
+  $($($(e.target).parent('td')[0]).parent('tr').next()).slideToggle();
+});
+
+$('body').delegate('td i.fa-minus-square', 'click', function (e) {
+  $(e.target).toggleClass('fa-plus-square fa-minus-square ');
+  $($($(e.target).parent('td')[0]).parent('tr').next()).slideToggle();
+});

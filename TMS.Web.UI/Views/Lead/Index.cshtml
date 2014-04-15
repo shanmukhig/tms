@@ -7,7 +7,6 @@
   ViewBag.Title = "Leads";
   Layout = "../Shared/_Layout.cshtml";
 }
-
 <div class="row" style="padding-top: 15px;">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -22,7 +21,7 @@
           }
         </select>
         <input style="height: 47px;" type="text" class="form-control" placeholder="Search Leads..." id="txtSearch">
-        <span class="btn btn-outline btn-primary input-group-addon" id="leadSearch" data-url="@Url.Action("Search", "Lead", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
+        <span class="btn btn-outline btn-primary input-group-addon" data-url="@Url.Action("Search", "Lead", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
           <i class="glyphicon glyphicon-search"></i>
         </span>
         <span class="btn btn-outline btn-primary input-group-addon" onclick="location.href='@Url.Action("Create", "Lead")'"><i class="glyphicon glyphicon-user"></i></span>
@@ -30,7 +29,6 @@
         <span class="btn btn-outline btn-info input-group-addon"><i class="glyphicon glyphicon-print"></i></span>
       </div>
     </div>
-    <!-- /.panel-heading -->
     <div class="panel-body">
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover display" id="dataTables-example">
@@ -82,11 +80,9 @@
         </table>
       </div>
     </div>
-    <!-- /.panel-body -->
   </div>
-  <!-- /.panel -->
-  <!-- /.col-lg-12 -->
 </div>
+
 <script language="javascript" type="text/javascript">
   $(document).ready(function () {
     $('#dataTables-example').dataTable();
@@ -96,8 +92,7 @@
     });
   });
 
-  $('#leadSearch').click(function () {
+  /*$('#leadSearch').click(function () {
     window.location = $(this).attr('data-url').replace('%7BsearchFields%7D', $('.selectpicker').val()).replace('%7BsearchString%7D', $('#txtSearch').val());;
-  });
-
+  });*/
 </script>

@@ -147,8 +147,6 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseRequestedController.cs" />
     <None Include="Content\bootstrap.min.css.bk" />
-    <Content Include="Scripts\Course.js" />
-    <Content Include="Scripts\jquery.validate.bootstrap.popover.min.js" />
     <Compile Include="Controllers\CourseTopicController.cs" />
     <Compile Include="Controllers\EmptyController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -167,9 +165,38 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\WebService.cs" />
     <Content Include="Content\bootstrap-dialog.min.css" />
+    <Content Include="Scripts\bootstrap-confirm.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-dialog.min.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap-tooltip.min.js" />
+    <Content Include="Scripts\bootstrap-transition.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\Course.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.metisMenu.js" />
+    <Content Include="Scripts\jquery.validate.bootstrap.popover.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\Lead_Create_Edit.js" />
     <Content Include="Scripts\Lead_Create_Edit_Validations.js" />
+    <Content Include="Scripts\less-1.5.1.js" />
+    <Content Include="Scripts\less-1.5.1.min.js" />
+    <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\moment-with-langs.js" />
+    <Content Include="Scripts\moment-with-langs.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\morris.js" />
+    <Content Include="Scripts\sb-admin.js" />
     <Content Include="Views\Instructor\Index.cshtml" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -199,15 +226,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Scripts\bootstrap-confirm.min.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
-    <Content Include="Scripts\bootstrap-select.min.js" />
-    <Content Include="Scripts\bootstrap-tooltip.min.js" />
-    <Content Include="Scripts\bootstrap-transition.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -258,22 +276,6 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\less\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\less\bootstrap-datetimepicker.less" />
-    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.0.js" />
-    <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Scripts\jquery.dataTables.min.js" />
-    <Content Include="Scripts\jquery.metisMenu.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\Lead_Create_Edit.js" />
-    <Content Include="Scripts\less-1.5.1.js" />
-    <Content Include="Scripts\less-1.5.1.min.js" />
-    <Content Include="Scripts\modernizr.js" />
-    <Content Include="Scripts\moment-with-langs.js" />
-    <Content Include="Scripts\moment-with-langs.min.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\morris.js" />
-    <Content Include="Scripts\sb-admin.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -291,7 +293,6 @@
     <Content Include="Views\Lead\Index.cshtml" />
     <Content Include="Views\Lead\Details.cshtml" />
     <Content Include="Views\Lead\Edit.cshtml" />
-    <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\CommunicationDetail\Index.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\CourseRequested\Index.cshtml" />

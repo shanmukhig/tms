@@ -25,7 +25,7 @@
       <div class="panel-body">
         <ul class="list-group">
           <li class="list-group-item list-group-item-text list-group-item-info">
-            <strong>Course Details</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i>
+            <strong>Course Details</strong><i class="fa fa-chevron-down pull-right"></i>
           </li>
           <li class="list-group-item">
             <div class="row">
@@ -55,10 +55,8 @@
                 <div class="row">
                   <div class="col-md-3 text-right"><strong>@Html.LabelForPascal(course => course.Price):</strong></div>
                   <div class="col-md-9  ">
-                    @if (@Model.Price.HasValue)
-                    {
-                      @Model.Price.Value.ToCurrencyString();
-                    }
+                    <span><i class="fa fa-usd"></i></span>
+                    @Model.Price.ToCurrencyString()
                   </div>
                 </div>
               </div>
@@ -66,7 +64,7 @@
           </li>
         </ul>
         <ul class="list-group">
-          <li class="list-group-item  list-group-item-text list-group-item-info"><strong>Topic Details</strong><i class="glyphicon glyphicon-chevron-down pull-right"></i></li>
+          <li class="list-group-item  list-group-item-text list-group-item-info"><strong>Topic Details</strong><i class="fa fa-chevron-down pull-right"></i></li>
           <li class="list-group-item">
             <div class="table-responsive">
               <table class="table">
@@ -122,7 +120,8 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Lead_Create_Edit.js")></script>
+<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Common.js")></script>
+<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Course.js")></script>
 <script type="text/javascript" language="javascript">
 
   //  $('td i.fa-plus-square').removeClass('fa-plus-square').addClass

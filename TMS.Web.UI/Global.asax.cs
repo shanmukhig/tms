@@ -56,44 +56,46 @@ namespace TMS.Web.UI
     public static void RegisterBundle(BundleCollection bundleCollection)
     {
       Bundle scriptBundle = new ScriptBundle("~/Scripts")
-        .Include("~/Scripts/modernizr.js",
-          "~/Scripts/jquery-2.1.0.min.js",
-          "~/Scripts/jqBootstrapValidation.js",
-          "~/Scripts/jquery.dataTables.min.js",
-          "~/Scripts/jquery.ext.dataTables.js",
-          "~/Scripts/jquery.metisMenu.js",
-          "~/Scripts/bootstrap.min.js",
-          "~/Scripts/moment.min.js",
-          "~/Scripts/bootstrap-datetimepicker.js",
-          "~/Scripts/dataTables.bootstrap.js",
-          "~/Scripts/jquery.dataTables.min.js",
-          "~/Scripts/morris.js",
-          "~/Scripts/sb-admin.js",
-          "~/Scripts/bootstrap-select.min.js",
-          "~/Scripts/bootstrap-tooltip.min.js",
-          "~/Scripts/bootstrap-transition.min.js",
-          "~/Scripts/bootstrap-confirm.min.js",
-          "~/Scripts/jquery.validate.min.js",
-          "~/Scripts/bootstrap-dialog.min.js",
-          "~/Scripts/bootstrap-spinedit.js"
+        .Include(
+        //"~/Scripts/modernizr.js",
+        //  "~/Scripts/jquery-2.1.0.min.js",
+        //  //"~/Scripts/jqBootstrapValidation.js",
+        //  "~/Scripts/jquery.dataTables.min.js",
+        //  "~/Scripts/jquery.ext.dataTables.js",
+        //  "~/Scripts/jquery.metisMenu.js",
+        //  "~/Scripts/bootstrap.min.js",
+        //  "~/Scripts/moment.min.js",
+        //  "~/Scripts/bootstrap-datetimepicker.js",
+        //  "~/Scripts/dataTables.bootstrap.js",
+        //  "~/Scripts/jquery.dataTables.min.js",
+        //  "~/Scripts/morris.js",
+        //  "~/Scripts/sb-admin.js",
+        //  "~/Scripts/bootstrap-select.min.js",
+        //  "~/Scripts/bootstrap-tooltip.min.js",
+        //  "~/Scripts/bootstrap-transition.min.js",
+        //  "~/Scripts/bootstrap-confirm.min.js",
+        //  "~/Scripts/jquery.validate.min.js",
+        //  "~/Scripts/bootstrap-dialog.min.js",
+        //  "~/Scripts/bootstrap-spinedit.js"
         );
 
       Bundle styleBundle = new StyleBundle("~/Content")
-        .Include("~/Content/bootstrap.min.css",
-          //"~/Content/glyphicons.css",
-          //"~/Content/halflings.css",
-          //"~/Content/bootstrap-theme.min.css",
-          "~/Content/bootstrap-datetimepicker.min.css",
-          "~/Content/dataTables.bootstrap.css",
-          //"~/Content/bootstrap-datepicker3.css",
-          "~/Content/flags-large.css",
-          "~/Content/fam-icons.css",
-          "~/Content/font-awesome.css",
-          "~/Content/sb-admin.css",
-          "~/Content/timeline.css",
-          "~/Content/bootstrap-select.min.css",
-          "~/Content/bootstrap-dialog.min.css",
-          "~/Content/bootstrap-spinedit.css"
+        .Include(
+        //"~/Content/bootstrap.min.css",
+        //  //"~/Content/glyphicons.css",
+        //  //"~/Content/halflings.css",
+        //  //"~/Content/bootstrap-theme.min.css",
+        //  "~/Content/bootstrap-datetimepicker.min.css",
+        //  "~/Content/dataTables.bootstrap.css",
+        //  //"~/Content/bootstrap-datepicker3.css",
+        //  //"~/Content/flags-large.css",
+        //  //"~/Content/fam-icons.css",
+        //  "~/Content/font-awesome.css",
+        //  "~/Content/sb-admin.css",
+        //  //"~/Content/timeline.css",
+        //  "~/Content/bootstrap-select.min.css",
+        //  "~/Content/bootstrap-dialog.min.css",
+        //  "~/Content/bootstrap-spinedit.css"
         );
 
       bundleCollection.Add(scriptBundle);
