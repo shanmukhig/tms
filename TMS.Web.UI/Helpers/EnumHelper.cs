@@ -25,7 +25,7 @@ namespace TMS.Web.UI.Controllers
     public static string ToCurrencyString(this decimal? value)
     {
       //return string.Format(new CultureInfo("en-US"), "{0:C}", value);
-      return value.HasValue ? string.Format("{0:F}", value) : string.Empty;
+      return value.HasValue ? Regex.Replace(string.Format("{0:C}", value), "[^0-9,\\.]", string.Empty) : string.Empty;
     }
 
     public static string ConvertToString(this int? t, string s)

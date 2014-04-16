@@ -34,3 +34,12 @@ $('body').delegate('i.fa-chevron-up.pull-right', 'click', function (e) {
 $('span i.fa-search').click(function () {
     window.location = $(this).attr('data-url').replace('%7BsearchFields%7D', $('.selectpicker').val()).replace('%7BsearchString%7D', $('#txtSearch').val());;
   });
+
+$('body').delegate('span i.fa-print', click, function() {
+  window.print();
+});
+
+/*$('span i.fa-print').click(function() {
+  alert('1');
+  window.print();
+});*/

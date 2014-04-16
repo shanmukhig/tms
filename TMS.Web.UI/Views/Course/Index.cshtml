@@ -12,7 +12,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-5">
           <div class="input-group">
             @*<select class="selectpicker show-menu-arrow" multiple="multiple" data-size="8" data-selected-text-format="count>0" title="">
               @{
@@ -25,14 +25,14 @@
             </select>*@
             <span class="input-group-addon"><i class="fa fa-caret-down"></i></span>
             <input type="text" class="form-control" placeholder="Search Courses..." data-url="@Url.Action("Search", "Course", new { searchString = "{searchString}", searchFields = "{searchFields}" })">
-            <span class="btn btn-outline input-group-addon"><i class="fa fa-search"></i></span>
+            <span class="btn btn-outline input-group-addon"><i class="fa fa-lg fa-search"></i></span>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 pull-right">
           <div class="input-group" style="height: 33px;">
-            <span class="btn btn-outline btn-primary input-group-addon" onclick="location.href='@Url.Action("Create", "Course")'"><i class="fa fa-book fa-fw"></i></span>
-            @*<span class="btn btn-outline btn-danger input-group-addon"><i class="fa fa-trash-o"></i>Delete </span>*@
-            <span class="btn btn-outline btn-info input-group-addon"><i class="fa fa-print fa-fw"></i></span>
+            <span class="btn btn-outline btn-primary input-group-addon" onclick="location.href='@Url.Action("Create", "Course")'"><i class="fa fa-lg fa-book fa-fw"></i></span>
+            <span class="btn btn-outline btn-danger input-group-addon"><i class="fa fa-lg fa-trash-o"></i></span>
+            <span class="btn btn-outline btn-info input-group-addon"><i class="fa fa-print fa-lg fa-fw"></i></span>
           </div>
         </div>
       </div>
@@ -42,6 +42,7 @@
         <table class="table table-striped table-bordered table-hover display" id="dataTables-example">
           <thead>
             <tr>
+              <th>&nbsp;</th>
               <th>Title</th>
               <th>Description</th>
               <th>Duration</th>
@@ -56,8 +57,9 @@
               {
                 foreach (Course course in ViewBag.Courses)
                 {
-                  <tr onclick="location.href = '@Url.Action("Details", "Course", new {id = course.Id})' " style="cursor: pointer;">
-                    <td>@course.Title</td>
+                  <tr>
+                    <td><input type="checkbox"/><input type="hidden" value="@course.Id"/></td>
+                    <td style="cursor: pointer;" onclick="location.href = '@Url.Action("Details", "Course", new {id = course.Id})'">@course.Title</td>
                     <td>
                       @course.Description
                     </td>
@@ -81,17 +83,19 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/Common.js")></script>
 <script language="javascript" type="text/javascript">
   $(document).ready(function () {
     $('#dataTables-example').dataTable();
 
-    $('.selectpicker').selectpicker({
+    /*$('.selectpicker').selectpicker({
       'countSelectedText': '',
-    });
+    });*/
   });
 
-  $('#courseSearch').click(function () {
+
+
+  /*$('#courseSearch').click(function () {
     window.location = $(this).attr('data-url').replace('%7BsearchFields%7D', $('.selectpicker').val()).replace('%7BsearchString%7D', $('#txtSearch').val());;
-  });
+  });*/
 </script>
+@*<script type="text/javascript" language="javascript" src=@Url.Content("~/Scripts/dataTables.bootstrap.js")></script>*@
